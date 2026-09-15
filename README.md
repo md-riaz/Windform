@@ -1,28 +1,53 @@
-# aeroUI
+# Windform
 
-aeroUI blends the best parts of Bootstrap, shadcn/ui, and Tailwind CSS into a single workflow. You author interfaces with Bootstrap's semantic class names and data attributes, layer on Tailwind utility recipes via `@apply`, and inherit shadcn's HSL design tokens for a modern aesthetic. Everything lives in one Tailwind source file so the CSS you ship is always tailored to your markup.
+> **Tailwind freedom with Bootstrap-ready interactions.**
 
-> **Project Motto**: _Shadcn UI built on top of Tailwind CSS with the syntax, semantics, and interactive JavaScript plugins of Bootstrap—combining the best of both design systems in a single project._
+Windform is a Tailwind 4-authored visual layer with one shared shadcn/ui-style HSL token system and two supported authoring paths. Write semantic Tailwind utilities directly in HTML for new work, or use selected Bootstrap class names styled through `@apply` for Bootstrap-compatible markup. Bootstrap 5.3.8's bundle is the sole component-interaction runtime.
 
-Because aeroUI is a Tailwind-authored layer—not a precompiled drop-in—you copy `src/aeroui.css` into your project and run it through your own Tailwind build (Tailwind CLI, Vite, Laravel Mix, etc.). That pipeline generates the production stylesheet alongside your application's markup so Bootstrap semantics, shadcn tokens, and Tailwind utilities stay in sync. The file at `docs/assets/aeroui.css` only illustrates the output used on the documentation site; compile your own build to guarantee accurate purging and future updates.
+> **Project motto**: _Tailwind freedom with Bootstrap-ready interactions._
+
+Windform is compiled by your Tailwind build rather than shipped as Bootstrap CSS. Include `src/windform.css` in your application entry and scan the markup that uses either authoring path. The generated `docs/assets/windform.css` is the documentation artifact; consumers should generate their own output.
 
 ## Key Goals
 
-- **Bootstrap API Compatibility** – Keep existing markup and behaviours powered by `bootstrap.bundle.min.js`.
-- **shadcn Token Parity** – Components inherit the exact shadcn HSL token set (`--background`, `--foreground`, `--primary`, ...) with both light and dark definitions so the visuals match the reference design system.
-- **Single CSS Source** – Author everything inside `src/aeroui.css` and compile with the Tailwind CLI or an equivalent build tool.
-- **Utility Composition** – Classes are composed with Tailwind utilities through `@apply` inside `@layer` blocks so you reuse the Tailwind mental model while keeping Bootstrap semantics.
-- **Unified Motto Alignment** – Every component and documentation example is crafted to honour the guiding motto of pairing Bootstrap semantics and interactivity with shadcn and Tailwind-powered styling.
+- **Two authoring paths** – Use semantic Tailwind utilities in templates, or selected Bootstrap selectors composed from the same utilities with `@apply`.
+- **Bootstrap runtime compatibility** – Bootstrap 5.3.8 supplies all supported component behavior, Popper placement, keyboard handling, focus management, and lifecycle classes.
+- **Shared shadcn-style tokens** – The classic semantic HSL token contract (`--background`, `--foreground`, `--primary`, ...) is shared across both paths and extended with status tokens.
+- **Single CSS source** – Author the system in `src/windform.css` and compile it with the Tailwind CLI.
 
-> **Note**: aeroUI is not a drop-in replacement for every Bootstrap selector. It focuses on elements that are required for Bootstrap's JavaScript interactivity (modals, dropdowns, offcanvas, etc.) and augments them with Tailwind-authored styling. Layout primitives, grid utilities, and additional design choices are expected to be handled the “Tailwind way” within your project.
+> **Scope**: Windform is not full Bootstrap CSS or a shadcn/Radix runtime. It supports selected Bootstrap 5.3 components and styles additional CSS-only visual recipes separately. Use Tailwind utilities for layout and local composition outside the documented compatibility selectors.
+
+## Choose an authoring path
+
+### Tailwind-native markup
+
+Use semantic utilities directly for new UI. Bootstrap data attributes can still provide supported interaction.
+
+```html
+<button class="inline-flex rounded-md bg-primary px-4 py-2 text-primary-foreground" data-bs-toggle="modal" data-bs-target="#settings">
+  Open settings
+</button>
+```
+
+### Bootstrap-compatible markup
+
+Use documented Bootstrap class names when migrating existing markup or when your team prefers Bootstrap semantics. Windform styles them with the same Tailwind utilities through `@apply`.
+
+```html
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#settings">
+  Open settings
+</button>
+```
+
+Both paths use the same tokens. Component selectors own reusable component styling; utility classes remain available for local layout and composition.
 
 ## Project Structure
 
 ```
-aeroUI/
-├── docs/assets/aeroui.css  # Generated CSS served to browsers and docs
+Windform/
+├── docs/assets/windform.css  # Generated CSS served to browsers and docs
 ├── docs/components.html    # Showcase of supported components
-├── src/aeroui.css          # Tailwind-authored source file
+├── src/windform.css          # Tailwind-authored source file
 ├── tailwind.config.js      # Tailwind content scan
 └── package.json            # Scripts for build/watch + Tailwind dependency
 ```
@@ -41,7 +66,7 @@ The Tailwind source describes structural expectations (modals, dropdowns, offcan
    # One-off build
    npm run build
 
-   # Live rebuild while editing src/aeroui.css
+   # Live rebuild while editing src/windform.css
    npm run dev
    ```
 
@@ -51,11 +76,11 @@ The Tailwind source describes structural expectations (modals, dropdowns, offcan
    ```
    Navigate to `http://localhost:8000/docs/components.html` to explore every component wired to Bootstrap JS.
 
-## Using aeroUI in Your Project
+## Using Windform in Your Project
 
-1. **Integrate aeroUI into your Tailwind build** – Copy `src/aeroui.css` into your source tree (for example `resources/css/aeroui.css`) and ensure your Tailwind/Vite pipeline scans the HTML, Blade, JSX, etc. where you author Bootstrap markup. The commands in `package.json` show the expected CLI flags if you prefer a standalone Tailwind process.
-2. **Bundle Bootstrap JavaScript** – Include `bootstrap.bundle.min.js` (via npm, CDN, or your preferred bundler) so data attributes continue to power interactive components.
-3. **Serve your generated CSS** – Point your app to the Tailwind build artifact produced on your machine or CI. The sample `docs/assets/aeroui.css` is useful for demos but should not be treated as an immutable production asset.
+1. **Copy and own Windform's source/config pair** – `src/windform.css` begins with `@config "../tailwind.config.js"`. Copy it with `tailwind.config.js` in the same relative layout (for example `resources/css/windform.css` beside `tailwind.config.js` at the project root), then extend that copied config for your HTML, Blade, JSX, or other templates. Directly importing `windform/windform.css` is not the supported configuration route in 0.1.0 because its paired config template must be owned and extended by your application.
+2. **Bundle Bootstrap JavaScript** – Include `bootstrap.bundle.min.js` (via npm, CDN, or your preferred bundler) so data attributes continue to power supported interactive components.
+3. **Serve your generated CSS** – Point your app to the Tailwind build artifact produced on your machine or CI. The sample `docs/assets/windform.css` is useful for demos but should not be treated as an immutable production asset.
 
 Your existing Bootstrap markup continues to function once those pieces are in place:
 
@@ -68,7 +93,7 @@ Your existing Bootstrap markup continues to function once those pieces are in pl
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Welcome to aeroUI</h5>
+        <h5 class="modal-title">Welcome to Windform</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -85,7 +110,7 @@ Your existing Bootstrap markup continues to function once those pieces are in pl
 
 ## Tailwind-powered styling
 
-`src/aeroui.css` composes Bootstrap-flavoured classes from Tailwind utilities:
+`src/windform.css` composes Bootstrap-flavoured classes from Tailwind utilities:
 
 ```css
 @layer components {
@@ -103,9 +128,15 @@ Override utilities in your application (or fork the source file) to customise co
 
 The base layer exports the full shadcn token map (`--background`, `--foreground`, `--primary`, etc.) so you can theme components globally or on a per-component basis by overriding CSS variables.
 
-## Component Coverage
+## Supported component tiers
 
-The single CSS layer implements the most common Bootstrap classes:
+The detailed release contract lives in [`docs/SUPPORTED_BOOTSTRAP_5_3_8.md`](docs/SUPPORTED_BOOTSTRAP_5_3_8.md).
+
+- **Tier 1 — supported and browser-tested:** alerts, button controls, collapse/accordion, dropdown, responsive navbar collapse, tabs, modal, offcanvas, toast, and scoped form controls.
+- **Tier 2 — beta and browser-tested:** carousel, tooltip, and popover.
+- **Tier 3 — visual recipes:** shadcn-inspired selectors where no Bootstrap runtime exists; consumers provide behavior and accessibility semantics.
+
+The single CSS layer implements the following Bootstrap-compatible selectors:
 
 - Buttons (`.btn`, variants, sizes, button groups)
 - Cards (`.card`, `.card-header`, `.card-body`, `.card-footer`)
@@ -116,7 +147,9 @@ The single CSS layer implements the most common Bootstrap classes:
 - Offcanvas (`.offcanvas`, directional variants)
 - Navigation (`.nav-tabs`, `.nav-pills`)
 - Alerts, badges, progress bar, table styling
-- Utility shims for common Bootstrap helpers (`.d-flex`, `.d-none`, `.text-center`, `.mt-3`, `.shadow-sm`, ...)
+- CSS-only visual recipes, explicitly marked where Bootstrap has no matching interaction runtime
+
+Bootstrap layout and helper utilities are out of scope; use Tailwind utilities directly for layout and local composition. `text-muted` is retained as a text-color compatibility selector and maps to `text-muted-foreground`.
 
 Refer to `docs/components.html` for real-world markup examples that exercise each component and match the Bootstrap data-API triggers.
 
@@ -128,4 +161,4 @@ Refer to `docs/components.html` for real-world markup examples that exercise eac
 
 ## License
 
-MIT © aeroUI contributors.
+MIT © Windform contributors.

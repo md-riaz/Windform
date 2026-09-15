@@ -1,5 +1,5 @@
 (function () {
-  const storageKey = 'aeroui-docs-theme';
+  const storageKey = 'windform-docs-theme';
   const root = document.querySelector('[data-site-root]');
   const toggles = Array.from(document.querySelectorAll('[data-theme-toggle]'));
 

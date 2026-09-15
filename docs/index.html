@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>aeroUI &mdash; Tailwind-first UI kit</title>
+    <title>Windform &mdash; Tailwind-first UI kit</title>
     <link
       rel="icon"
       type="image/svg+xml"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%233b82f6'/%3E%3Cpath fill='white' d='M10.4 23.4a1.2 1.2 0 0 1-1.1-1.7l5.2-12c.4-.9 1.9-.9 2.3 0l5.2 12a1.2 1.2 0 0 1-1.1 1.7h-2.1a1.2 1.2 0 0 1-1.1-.7l-.9-2.1h-3.5l-.9 2.1a1.2 1.2 0 0 1-1.1.7zm6.2-6.2-1.2-2.8-1.2 2.8z'/%3E%3C/svg%3E"
     />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
-    <link rel="stylesheet" href="assets/aeroui.css" />
+    <link rel="stylesheet" href="assets/windform.css" />
     <link rel="stylesheet" href="assets/typography-overrides.css" />
   </head>
   <body id="top" class="bg-background text-foreground antialiased">
@@ -24,7 +24,7 @@
                 <path d="m9.5 9.75 5 2.25-5 2.25" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
             </span>
-            aeroUI
+            Windform
           </a>
           <nav class="hidden items-center gap-6 text-sm font-medium md:flex">
             <a class="text-muted-foreground transition hover:text-foreground" href="#features">Features</a>
@@ -36,7 +36,7 @@
           </nav>
           <div class="flex items-center gap-3">
             <a
-              href="https://github.com/md-riaz/aeroUI"
+              href="https://github.com/md-riaz/Windform"
               class="hidden rounded-full border border-border px-4 py-2 text-sm font-semibold text-foreground transition hover:border-primary/60 hover:text-primary md:inline-flex"
             >
               GitHub
@@ -63,7 +63,7 @@
                 Build polished experiences with Tailwind-calibrated tokens.
               </h1>
               <p class="max-w-xl text-lg leading-relaxed text-muted-foreground">
-                aeroUI ships ready-to-copy markup wired to Tailwind utility recipes and shadcn/ui tokens while embracing Bootstrap&rsquo;s familiar semantics and JavaScript behaviours. Copy the markup, compile <code class="rounded bg-secondary px-1.5 py-0.5 text-xs text-foreground">src/aeroui.css</code> with your Tailwind pipeline, ship an optimised stylesheet that matches your project, and load <code class="rounded bg-secondary px-1.5 py-0.5 text-xs text-foreground">bootstrap.bundle.min.js</code> to power interactive behaviours&mdash;no extra jQuery required.
+                Windform ships ready-to-copy markup wired to Tailwind utility recipes and shadcn/ui tokens while embracing Bootstrap&rsquo;s familiar semantics and JavaScript behaviours. Copy the markup, compile <code class="rounded bg-secondary px-1.5 py-0.5 text-xs text-foreground">src/windform.css</code> with your Tailwind pipeline, ship an optimised stylesheet that matches your project, and load <code class="rounded bg-secondary px-1.5 py-0.5 text-xs text-foreground">bootstrap.bundle.min.js</code> to power interactive behaviours&mdash;no extra jQuery required.
               </p>
               <p class="max-w-xl text-base leading-relaxed text-muted-foreground">
                 <span class="font-semibold text-foreground">Project Motto:</span> Shadcn UI built on top of Tailwind CSS and the syntax, semantics, and JavaScript interactivity of Bootstrap for a single, cohesive toolkit.
@@ -90,18 +90,18 @@
               <div class="space-y-5">
                 <div>
                   <h2 class="text-base font-semibold text-foreground">Tailwind-powered authoring</h2>
-                  <p class="mt-2 text-sm text-muted-foreground">Copy the markup, add <code class="rounded bg-secondary px-1.5 py-0.5 text-xs text-foreground">src/aeroui.css</code> to your Tailwind build, and let the compiler generate a production-ready bundle for your project.</p>
+                  <p class="mt-2 text-sm text-muted-foreground">Copy the markup, add <code class="rounded bg-secondary px-1.5 py-0.5 text-xs text-foreground">src/windform.css</code> to your Tailwind build, and let the compiler generate a production-ready bundle for your project.</p>
                 </div>
                 <div class="rounded-2xl border border-border bg-muted/40 p-4">
                   <pre class="overflow-x-auto text-xs text-muted-foreground"><code># tailwind.config.js
 content: [
   "./resources/views/**/*.blade.php",
   "./resources/js/**/*.js",
-  "./vendor/aeroui/**/*.html"
+  "./vendor/windform/**/*.html"
 ],
 
 # vite.config.js / tailwind CLI output
-import "./resources/css/aeroui.css";
+import "./resources/css/windform.css";
 </code></pre>
                 </div>
                 <div class="grid gap-3 sm:grid-cols-2">
@@ -110,8 +110,8 @@ import "./resources/css/aeroui.css";
                     <p class="mt-1 text-xs text-muted-foreground">Semantic class names and utility recipes keep your components consistent without extra CSS.</p>
                   </div>
                   <div class="rounded-2xl border border-border bg-background/60 p-4">
-                    <p class="text-sm font-semibold text-foreground">Tailwind utility core</p>
-                    <p class="mt-1 text-xs text-muted-foreground">Compose components with Tailwind utilities and shadcn/ui tokens directly in your build.</p>
+                    <p class="text-sm font-semibold text-foreground">Bootstrap-compatible</p>
+                    <p class="mt-1 text-xs text-muted-foreground">Use selected Bootstrap selectors such as <code>.btn</code> and <code>.modal</code>, composed with <code>@apply</code> from the same tokens.</p>
                   </div>
                 </div>
               </div>
@@ -123,7 +123,7 @@ import "./resources/css/aeroui.css";
           <div class="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
             <div class="flex flex-col gap-6 text-center">
               <span class="mx-auto inline-flex items-center gap-2 rounded-full border border-border px-3 py-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                Why teams choose aeroUI
+                Why teams choose Windform
               </span>
               <h2 class="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Opinionated utilities, endless composition</h2>
               <p class="mx-auto max-w-3xl text-base text-muted-foreground">
@@ -256,7 +256,7 @@ import "./resources/css/aeroui.css";
               <div>
                 <h2 class="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Design tokens that sync with Tailwind</h2>
                 <p class="mt-4 text-base text-muted-foreground">
-                  Run your own Tailwind build to generate the aeroUI CSS that ships with your project. The compiled file powering this documentation site is only an example—rebuild from the Tailwind source so tokens stay aligned with the markup you actually deploy.
+                  Run your own Tailwind build to generate the Windform CSS that ships with your project. The compiled file powering this documentation site is only an example—rebuild from the Tailwind source so tokens stay aligned with the markup you actually deploy.
                 </p>
                 <div class="mt-8 grid gap-4 sm:grid-cols-2">
                   <div class="rounded-3xl border border-border bg-card p-6">
@@ -281,15 +281,14 @@ import "./resources/css/aeroui.css";
                 <div class="rounded-2xl border border-border bg-muted/40 p-4">
                   <h3 class="text-xs font-semibold uppercase tracking-wide text-foreground/70">Token spotlight</h3>
                   <pre class="mt-4 overflow-x-auto text-xs text-muted-foreground"><code>:root {
-  --radius: 1.5rem;
+  --radius: 0.75rem;
   --font-sans: "Inter", system-ui;
-  --primary: 37 99 235;
-  --muted-foreground: 100 116 139;
+  --primary: 221.2 83.2% 53.3%;
+  --muted-foreground: 215.4 16.3% 46.9%;
 }
 
-.btn-primary {
-  border-radius: var(--radius);
-  box-shadow: 0 20px 45px -25px rgba(37, 99, 235, 0.4);
+.dark {
+  --background: 222.2 84% 4.9%;
 }</code></pre>
                 </div>
                 <p class="text-sm text-muted-foreground">
@@ -311,14 +310,14 @@ import "./resources/css/aeroui.css";
             <div class="max-w-2xl space-y-4">
               <h2 class="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Ship faster with an impressive landing page</h2>
               <p class="text-base text-muted-foreground">
-                Compose your next marketing site with curated blocks, carefully tuned typography, and accessible interactions. aeroUI gives you the building blocks to craft a shadcn-inspired experience that feels cohesive in any Tailwind project.
+                Compose your next marketing site with curated blocks, carefully tuned typography, and accessible interactions. Windform gives you the building blocks to craft a shadcn-inspired experience that feels cohesive in any Tailwind project.
               </p>
             </div>
             <div class="flex flex-wrap gap-4">
               <a class="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow transition hover:bg-primary/90" href="blocks.html">
                 Start with blocks
               </a>
-              <a class="inline-flex items-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-semibold text-foreground transition hover:border-primary/60 hover:text-primary" href="https://github.com/md-riaz/aeroUI">
+              <a class="inline-flex items-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-semibold text-foreground transition hover:border-primary/60 hover:text-primary" href="https://github.com/md-riaz/Windform">
                 Star on GitHub
               </a>
             </div>
@@ -328,19 +327,18 @@ import "./resources/css/aeroui.css";
 
       <footer class="border-t border-border/80 bg-background/80">
         <div class="mx-auto flex w-full max-w-6xl flex-col items-start gap-6 px-4 py-10 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-          <p class="text-sm leading-relaxed text-muted-foreground">&copy; <span data-year></span> aeroUI. Built for Tailwind-first workflows.</p>
+          <p class="text-sm leading-relaxed text-muted-foreground">&copy; <span data-year></span> Windform. Built for Tailwind-first workflows.</p>
           <div class="flex flex-wrap gap-4">
             <a class="transition hover:text-foreground" href="components.html">Components</a>
             <a class="transition hover:text-foreground" href="docs.html">Docs</a>
             <a class="transition hover:text-foreground" href="blocks.html">Blocks</a>
-            <a class="transition hover:text-foreground" href="https://github.com/md-riaz/aeroUI">GitHub</a>
+            <a class="transition hover:text-foreground" href="https://github.com/md-riaz/Windform">GitHub</a>
           </div>
         </div>
       </footer>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script>
       document.querySelectorAll('[data-year]').forEach((el) => {
         el.textContent = new Date().getFullYear();

@@ -1,13 +1,63 @@
 {
-  "name": "aeroui",
+  "name": "windform",
   "version": "0.1.0",
-  "description": "aeroUI component layer with Bootstrap API and shadcn-inspired visuals",
+  "description": "Tailwind 4.3 shadcn-token visual compatibility layer for a documented Bootstrap 5.3.8 component subset",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/md-riaz/Windform.git"
+  },
+  "homepage": "https://github.com/md-riaz/Windform#readme",
+  "bugs": {
+    "url": "https://github.com/md-riaz/Windform/issues"
+  },
+  "keywords": [
+    "tailwindcss",
+    "tailwindcss-v4",
+    "bootstrap",
+    "bootstrap-5",
+    "shadcn",
+    "design-tokens",
+    "css"
+  ],
+  "files": [
+    "src/windform.css",
+    "tailwind.config.js",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "style": "./src/windform.css",
+  "exports": {
+    "./windform.css": "./src/windform.css",
+    "./tailwind.config": "./tailwind.config.js",
+    "./package.json": "./package.json"
+  },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
-    "build": "tailwindcss -i ./src/aeroui.css -o ./docs/assets/aeroui.css --minify",
-    "dev": "tailwindcss -i ./src/aeroui.css -o ./docs/assets/aeroui.css --watch"
+    "build": "tailwindcss -i ./src/windform.css -o ./docs/assets/windform.css --minify",
+    "check": "npm run build && node ./scripts/check-build.cjs && node ./scripts/check-package.cjs",
+    "test:compat": "playwright test",
+    "test:a11y": "playwright test --grep @a11y",
+    "test": "npm run check && npm run test:compat",
+    "dev": "tailwindcss -i ./src/windform.css -o ./docs/assets/windform.css --watch"
+  },
+  "peerDependencies": {
+    "bootstrap": "^5.3.8",
+    "tailwindcss": "^4.3.0"
+  },
+  "peerDependenciesMeta": {
+    "bootstrap": {
+      "optional": true
+    }
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.13"
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "1.63.0",
+    "@tailwindcss/cli": "4.3.3",
+    "bootstrap": "5.3.8",
+    "tailwindcss": "4.3.3"
   }
 }
