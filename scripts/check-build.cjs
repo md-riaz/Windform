@@ -23,6 +23,9 @@ const requiredFragments = [
   '.btn-check',
   '.toast.showing',
   '[data-popper-placement^=',
+  '.bs-tooltip-auto',
+  '.bs-popover-auto',
+  '.carousel-fade .active.carousel-item-start',
   '.modal-backdrop',
   '.collapse-horizontal',
 ];

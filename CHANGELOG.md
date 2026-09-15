@@ -6,6 +6,7 @@ All notable changes to Windform are documented here.
 
 ### Changed
 - Renamed the project from aeroUI to Windform: **Tailwind freedom with Bootstrap-ready interactions.**
+- Closed the historical critique against the documented two-path release contract.
 
 ## [0.1.0] - 2026-09-15
 

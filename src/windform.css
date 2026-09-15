@@ -1375,28 +1375,44 @@
   }
 
   .tooltip[data-popper-placement^="top"] .tooltip-arrow,
-  .popover[data-popper-placement^="top"] .popover-arrow {
+  .bs-tooltip-top .tooltip-arrow,
+  .bs-tooltip-auto[data-popper-placement^="top"] .tooltip-arrow,
+  .popover[data-popper-placement^="top"] .popover-arrow,
+  .bs-popover-top > .popover-arrow,
+  .bs-popover-auto[data-popper-placement^="top"] > .popover-arrow {
     bottom: -0.35rem;
     left: 50%;
     transform: translateX(-50%) rotate(45deg);
   }
 
   .tooltip[data-popper-placement^="bottom"] .tooltip-arrow,
-  .popover[data-popper-placement^="bottom"] .popover-arrow {
+  .bs-tooltip-bottom .tooltip-arrow,
+  .bs-tooltip-auto[data-popper-placement^="bottom"] .tooltip-arrow,
+  .popover[data-popper-placement^="bottom"] .popover-arrow,
+  .bs-popover-bottom > .popover-arrow,
+  .bs-popover-auto[data-popper-placement^="bottom"] > .popover-arrow {
     top: -0.35rem;
     left: 50%;
     transform: translateX(-50%) rotate(45deg);
   }
 
   .tooltip[data-popper-placement^="left"] .tooltip-arrow,
-  .popover[data-popper-placement^="left"] .popover-arrow {
+  .bs-tooltip-start .tooltip-arrow,
+  .bs-tooltip-auto[data-popper-placement^="left"] .tooltip-arrow,
+  .popover[data-popper-placement^="left"] .popover-arrow,
+  .bs-popover-start > .popover-arrow,
+  .bs-popover-auto[data-popper-placement^="left"] > .popover-arrow {
     right: -0.35rem;
     top: 50%;
     transform: translateY(-50%) rotate(45deg);
   }
 
   .tooltip[data-popper-placement^="right"] .tooltip-arrow,
-  .popover[data-popper-placement^="right"] .popover-arrow {
+  .bs-tooltip-end .tooltip-arrow,
+  .bs-tooltip-auto[data-popper-placement^="right"] .tooltip-arrow,
+  .popover[data-popper-placement^="right"] .popover-arrow,
+  .bs-popover-end > .popover-arrow,
+  .bs-popover-auto[data-popper-placement^="right"] > .popover-arrow {
     left: -0.35rem;
     top: 50%;
     transform: translateY(-50%) rotate(45deg);
@@ -2707,6 +2723,13 @@
   .carousel-fade .carousel-item-next.carousel-item-start,
   .carousel-fade .carousel-item-prev.carousel-item-end {
     @apply z-10 opacity-100;
+  }
+
+  .carousel-fade .active.carousel-item-start,
+  .carousel-fade .active.carousel-item-end {
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0s 0.6s;
   }
 
   .carousel-control-prev,

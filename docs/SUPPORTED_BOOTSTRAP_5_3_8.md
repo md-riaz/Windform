@@ -12,7 +12,7 @@ Bootstrap 5.3.8's bundle is Windform's only interaction runtime. Windform does n
 - Tabs
 - Modal and offcanvas
 - Toast
-- Core form controls, validation states, floating labels, ranges, and file controls
+- Core text/select/check controls, validation states, floating labels, and ranges
 
 ## Tier 2 — beta, browser-tested
 
@@ -28,5 +28,5 @@ shadcn-inspired controls without a Bootstrap equivalent, including command, cale
 
 - Full Bootstrap CSS, grid, and helper-utility parity
 - ScrollSpy as a package contract
-- Full Bootstrap form API or responsive utility matrix
+- Full Bootstrap form API (including file-control details) or responsive utility matrix
 - shadcn/Radix JavaScript behavior

@@ -84,19 +84,23 @@ test('Bootstrap validation, placeholders, alerts, and toggle buttons expose styl
   await expect(page.locator('#label')).toHaveCSS('box-shadow', /inset/);
 });
 
-test('Bootstrap Popper overlays retain runtime placement', async ({ page }) => {
+test('Bootstrap Popper overlays retain runtime placement and arrow styles', async ({ page }) => {
   await loadRuntime(page, `<button id="target" title="Tooltip" data-bs-content="Popover">Target</button>`);
 
-  await page.evaluate(() => window.bootstrap.Tooltip.getOrCreateInstance('#target').show());
+  await page.evaluate(() => window.bootstrap.Tooltip.getOrCreateInstance('#target', { placement: 'bottom' }).show());
   const tooltip = page.locator('.tooltip');
-  await expect(tooltip).toHaveAttribute('data-popper-placement', /top|bottom|left|right/);
+  await expect(tooltip).toHaveAttribute('data-popper-placement', /^bottom/);
+  await expect(tooltip).toHaveClass(/bs-tooltip-auto/);
   await expect(tooltip).toHaveCSS('left', /^(?!50%)/);
+  await expect(tooltip.locator('.tooltip-arrow')).toHaveCSS('top', /-/);
 
   await page.evaluate(() => window.bootstrap.Tooltip.getInstance('#target').dispose());
-  await page.evaluate(() => window.bootstrap.Popover.getOrCreateInstance('#target').show());
+  await page.evaluate(() => window.bootstrap.Popover.getOrCreateInstance('#target', { placement: 'right' }).show());
   const popover = page.locator('.popover');
-  await expect(popover).toHaveAttribute('data-popper-placement', /top|bottom|left|right/);
+  await expect(popover).toHaveAttribute('data-popper-placement', /^right/);
+  await expect(popover).toHaveClass(/bs-popover-auto/);
   await expect(popover).toHaveCSS('left', /^(?!50%)/);
+  await expect(popover.locator('.popover-arrow')).toHaveCSS('left', /-/);
 });
 
 test('Bootstrap carousel moves active slide', async ({ page }) => {
@@ -109,4 +113,14 @@ test('Bootstrap carousel moves active slide', async ({ page }) => {
   await page.locator('#next').click();
   await expect(page.locator('#two')).toHaveClass(/active/);
   await expect(page.locator('#two')).toHaveCSS('display', 'block');
+});
+
+test('Bootstrap fade carousel clears the departing slide after transition', async ({ page }) => {
+  await loadRuntime(page, `
+    <div id="carousel" class="carousel carousel-fade slide"><div class="carousel-inner"><div id="one" class="carousel-item active">One</div><div id="two" class="carousel-item">Two</div></div><button id="next" data-bs-target="#carousel" data-bs-slide="next">Next</button></div>
+  `);
+
+  await page.locator('#next').click();
+  await expect(page.locator('#two')).toHaveClass(/active/);
+  await expect(page.locator('#one')).toHaveCSS('opacity', '0');
 });

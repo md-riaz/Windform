@@ -95,7 +95,7 @@ For a static prototype or a quick proof of concept, copy these three tags. Windf
 </div>
 ```
 
-The `@theme` block is required: `windform.css` provides CSS variables and component classes, while Tailwind&rsquo;s browser CDN needs that mapping before new utilities such as `bg-primary`, `text-muted-foreground`, `border-border`, and `rounded-lg` can be generated. The browser CDN is ideal for learning, demos, and small static pages; use the build path below for production performance, strict CSP environments, or a customized/purged stylesheet.
+The `@theme` block is required: `windform.css` provides CSS variables and component classes, while Tailwind&rsquo;s browser CDN needs that mapping before new utilities such as `bg-primary`, `text-muted-foreground`, `border-border`, and `rounded-lg` can be generated. The browser CDN is ideal for learning, demos, and small static pages; pin CDN versions and use a self-hosted/compiled stylesheet for production performance, strict content-security policies, offline/reproducible deployments, or a customized/purged stylesheet.
 
 ## Optimized build for production
 
@@ -190,7 +190,7 @@ The base layer exports the full shadcn token map (`--background`, `--foreground`
 
 ## Supported component tiers
 
-The detailed release contract lives in [`docs/SUPPORTED_BOOTSTRAP_5_3_8.md`](docs/SUPPORTED_BOOTSTRAP_5_3_8.md).
+The detailed release contract lives in [`docs/SUPPORTED_BOOTSTRAP_5_3_8.md`](docs/SUPPORTED_BOOTSTRAP_5_3_8.md). The historical audit has been closed against that contract in [`docs/CRITIQUE_RESOLUTION.md`](docs/CRITIQUE_RESOLUTION.md).
 
 - **Tier 1 — supported and browser-tested:** alerts, button controls, collapse/accordion, dropdown, responsive navbar collapse, tabs, modal, offcanvas, toast, and scoped form controls.
 - **Tier 2 — beta and browser-tested:** carousel, tooltip, and popover.
