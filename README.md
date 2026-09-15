@@ -6,14 +6,14 @@ Windform is a Tailwind 4-authored visual layer with one shared shadcn/ui-style H
 
 > **Project motto**: _Tailwind freedom with Bootstrap-ready interactions._
 
-Windform is compiled by your Tailwind build rather than shipped as Bootstrap CSS. Include `src/windform.css` in your application entry and scan the markup that uses either authoring path. The generated `docs/assets/windform.css` is the documentation artifact; consumers should generate their own output.
+Windform works with or without a local build. For a fast prototype, load the published Windform stylesheet, Tailwind’s browser CDN, and Bootstrap’s bundle from a page. For a production app, compile `src/windform.css` with your own Tailwind build so your output contains only the utilities your markup uses.
 
 ## Key Goals
 
 - **Two authoring paths** – Use semantic Tailwind utilities in templates, or selected Bootstrap selectors composed from the same utilities with `@apply`.
 - **Bootstrap runtime compatibility** – Bootstrap 5.3.8 supplies all supported component behavior, Popper placement, keyboard handling, focus management, and lifecycle classes.
 - **Shared shadcn-style tokens** – The classic semantic HSL token contract (`--background`, `--foreground`, `--primary`, ...) is shared across both paths and extended with status tokens.
-- **Single CSS source** – Author the system in `src/windform.css` and compile it with the Tailwind CLI.
+- **No-build or optimized build** – Start with CDN links for a static page, then compile `src/windform.css` with Tailwind when you need a smaller, customized production bundle.
 
 > **Scope**: Windform is not full Bootstrap CSS or a shadcn/Radix runtime. It supports selected Bootstrap 5.3 components and styles additional CSS-only visual recipes separately. Use Tailwind utilities for layout and local composition outside the documented compatibility selectors.
 
@@ -41,6 +41,66 @@ Use documented Bootstrap class names when migrating existing markup or when your
 
 Both paths use the same tokens. Component selectors own reusable component styling; utility classes remain available for local layout and composition.
 
+## Fast start — no build required
+
+For a static prototype or a quick proof of concept, copy these three tags. Windform supplies the Bootstrap-compatible component styling, Tailwind’s browser CDN makes Tailwind utilities available in markup, and Bootstrap’s bundle provides interaction.
+
+```html
+<head>
+  <!-- Windform tokens + Bootstrap-compatible classes -->
+  <link rel="stylesheet" href="https://md-riaz.github.io/Windform/assets/windform.css">
+
+  <!-- Tailwind generates utilities in the browser -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- Map Windform tokens to Tailwind semantic utility names -->
+  <style type="text/tailwindcss">
+    @theme {
+      --color-background: hsl(var(--background));
+      --color-foreground: hsl(var(--foreground));
+      --color-card: hsl(var(--card));
+      --color-card-foreground: hsl(var(--card-foreground));
+      --color-primary: hsl(var(--primary));
+      --color-primary-foreground: hsl(var(--primary-foreground));
+      --color-secondary: hsl(var(--secondary));
+      --color-secondary-foreground: hsl(var(--secondary-foreground));
+      --color-muted: hsl(var(--muted));
+      --color-muted-foreground: hsl(var(--muted-foreground));
+      --color-accent: hsl(var(--accent));
+      --color-accent-foreground: hsl(var(--accent-foreground));
+      --color-border: hsl(var(--border));
+      --color-input: hsl(var(--input));
+      --color-ring: hsl(var(--ring));
+      --radius-sm: calc(var(--radius) - 4px);
+      --radius-md: calc(var(--radius) - 2px);
+      --radius-lg: var(--radius);
+    }
+  </style>
+
+  <!-- Bootstrap remains the interaction runtime -->
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+```
+
+```html
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#welcome">
+  Open dialog
+</button>
+
+<div id="welcome" class="modal fade" tabindex="-1" aria-labelledby="welcome-title">
+  <div class="modal-dialog"><div class="modal-content">
+    <div class="modal-header"><h2 id="welcome-title" class="modal-title">Welcome</h2></div>
+    <div class="modal-body">Tailwind utilities and Bootstrap interactions work without a local build.</div>
+  </div></div>
+</div>
+```
+
+The `@theme` block is required: `windform.css` provides CSS variables and component classes, while Tailwind&rsquo;s browser CDN needs that mapping before new utilities such as `bg-primary`, `text-muted-foreground`, `border-border`, and `rounded-lg` can be generated. The browser CDN is ideal for learning, demos, and small static pages; use the build path below for production performance, strict CSP environments, or a customized/purged stylesheet.
+
+## Optimized build for production
+
+Use the build path when you want a minimal CSS bundle or need to customize the Windform source/config pair.
+
 ## Project Structure
 
 ```
@@ -54,7 +114,7 @@ Windform/
 
 The Tailwind source describes structural expectations (modals, dropdowns, offcanvas, collapse) alongside component visuals so the generated CSS works out of the box with Bootstrap's JavaScript.
 
-## Getting Started
+## Build setup
 
 1. **Install dependencies**
    ```bash
@@ -76,7 +136,7 @@ The Tailwind source describes structural expectations (modals, dropdowns, offcan
    ```
    Navigate to `http://localhost:8000/docs/components.html` to explore every component wired to Bootstrap JS.
 
-## Using Windform in Your Project
+## Using Windform in a built project
 
 1. **Copy and own Windform's source/config pair** – `src/windform.css` begins with `@config "../tailwind.config.js"`. Copy it with `tailwind.config.js` in the same relative layout (for example `resources/css/windform.css` beside `tailwind.config.js` at the project root), then extend that copied config for your HTML, Blade, JSX, or other templates. Directly importing `windform/windform.css` is not the supported configuration route in 0.1.0 because its paired config template must be owned and extended by your application.
 2. **Bundle Bootstrap JavaScript** – Include `bootstrap.bundle.min.js` (via npm, CDN, or your preferred bundler) so data attributes continue to power supported interactive components.

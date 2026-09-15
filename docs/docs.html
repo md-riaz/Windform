@@ -82,7 +82,7 @@
             </span>
             <h1 class="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Project documentation</h1>
             <p class="text-base leading-relaxed text-muted-foreground">
-              This guide shows how to build shadcn-inspired interfaces with Tailwind utility classes using the Windform source file. Copy the markup you need, add <code class="rounded bg-secondary px-1 py-0.5 text-xs text-foreground">src/windform.css</code> to your Tailwind build, and compile a stylesheet that fits your project.
+              Start without a local build by loading Windform&rsquo;s published stylesheet, Tailwind&rsquo;s browser CDN, and Bootstrap&rsquo;s bundle. When you need a smaller or customized production stylesheet, copy <code class="rounded bg-secondary px-1 py-0.5 text-xs text-foreground">src/windform.css</code> into your Tailwind build.
             </p>
             <p class="text-sm leading-relaxed text-muted-foreground">
               <span class="font-semibold text-foreground">Remember the motto:</span> shadcn UI principles layered on Tailwind CSS, paired with the semantics and interactive plugins from Bootstrap so the entire ecosystem feels cohesive.
@@ -108,9 +108,41 @@
           <div class="mx-auto w-full max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
             <h2 class="text-2xl font-semibold text-foreground">Setup</h2>
             <p class="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Windform ships as Tailwind source. Copy <code class="rounded bg-secondary px-1 py-0.5 text-xs text-foreground">src/windform.css</code> into your project, register it with your Tailwind configuration, and let your build tool emit the final CSS your app will ship. Keep <code class="rounded bg-secondary px-1 py-0.5 text-xs text-foreground">bootstrap.bundle.min.js</code> in place: Bootstrap 5.3.8 is the sole component-interaction runtime and already includes Popper.
+              Choose the no-build CDN route for a static page or prototype, or compile Windform with Tailwind for production optimization. Bootstrap 5.3.8 remains the sole component-interaction runtime and its bundle already includes Popper.
             </p>
             <div class="mt-6 space-y-6">
+              <article class="rounded-3xl border border-primary/30 bg-primary/5 p-6">
+                <h3 class="text-lg font-semibold text-foreground">Fast start: CDN only</h3>
+                <p class="mt-2 text-sm text-muted-foreground">No Node.js, npm, or bundler is required. Add Windform&rsquo;s generated stylesheet, Tailwind&rsquo;s browser CDN, and Bootstrap&rsquo;s bundle to any HTML document.</p>
+                <pre class="mt-4 overflow-x-auto rounded-2xl bg-slate-950 p-4 text-xs text-slate-100"><code>&lt;link rel="stylesheet" href="https://md-riaz.github.io/Windform/assets/windform.css"&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"&gt;&lt;/script&gt;
+
+&lt;style type="text/tailwindcss"&gt;
+  @theme {
+    --color-background: hsl(var(--background));
+    --color-foreground: hsl(var(--foreground));
+    --color-card: hsl(var(--card));
+    --color-card-foreground: hsl(var(--card-foreground));
+    --color-primary: hsl(var(--primary));
+    --color-primary-foreground: hsl(var(--primary-foreground));
+    --color-secondary: hsl(var(--secondary));
+    --color-secondary-foreground: hsl(var(--secondary-foreground));
+    --color-muted: hsl(var(--muted));
+    --color-muted-foreground: hsl(var(--muted-foreground));
+    --color-accent: hsl(var(--accent));
+    --color-accent-foreground: hsl(var(--accent-foreground));
+    --color-border: hsl(var(--border));
+    --color-input: hsl(var(--input));
+    --color-ring: hsl(var(--ring));
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-lg: var(--radius);
+  }
+&lt;/style&gt;
+
+&lt;script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;</code></pre>
+                <p class="mt-3 text-xs text-muted-foreground">The <code class="rounded bg-secondary px-1 py-0.5 text-foreground">@theme</code> mapping is required for new semantic Tailwind utilities such as <code class="rounded bg-secondary px-1 py-0.5 text-foreground">bg-primary</code> and <code class="rounded bg-secondary px-1 py-0.5 text-foreground">text-muted-foreground</code>. Use this route for demos, learning, and simple static pages; choose the build path for the smallest production CSS and strict content-security policies.</p>
+              </article>
               <article class="rounded-3xl border border-border bg-card p-6">
                 <h3 class="text-lg font-semibold text-foreground">Choose an authoring path</h3>
                 <div class="mt-3 grid gap-4 sm:grid-cols-2 text-sm text-muted-foreground">
@@ -119,7 +151,7 @@
                 </div>
               </article>
               <article class="rounded-3xl border border-border bg-card p-6">
-                <h3 class="text-lg font-semibold text-foreground">1. Add Windform to Tailwind</h3>
+                <h3 class="text-lg font-semibold text-foreground">Production build: 1. Add Windform to Tailwind</h3>
                 <p class="mt-2 text-sm text-muted-foreground">
                   Copy the source file into your project (for example <code class="rounded bg-secondary px-1 py-0.5 text-xs text-foreground">resources/css/windform.css</code>) and include it in <code class="rounded bg-secondary px-1 py-0.5 text-xs text-foreground">tailwind.config.js</code> so the compiler can see your component templates.
                 </p>
@@ -139,7 +171,7 @@ module.exports = {
               </article>
 
               <article class="rounded-3xl border border-border bg-card p-6">
-                <h3 class="text-lg font-semibold text-foreground">2. Compile your stylesheet</h3>
+                <h3 class="text-lg font-semibold text-foreground">2. Compile an optimized stylesheet</h3>
                 <p class="mt-2 text-sm text-muted-foreground">
                   Run the Tailwind CLI, Vite, Mix, or your preferred build tool to generate the CSS that applies Windform&rsquo;s utility recipes to your markup.
                 </p>
@@ -147,7 +179,7 @@ module.exports = {
               </article>
 
               <article class="rounded-3xl border border-border bg-card p-6">
-                <h3 class="text-lg font-semibold text-foreground">3. Load your compiled stylesheet</h3>
+                <h3 class="text-lg font-semibold text-foreground">3. Load the optimized stylesheet</h3>
                 <p class="mt-2 text-sm text-muted-foreground">
                   Reference the CSS emitted by your build as the primary stylesheet for your project. Windform is designed to replace legacy Bootstrap styles with Tailwind utility classes, so you no longer need to ship Bootstrap&rsquo;s CSS alongside it. The <code class="rounded bg-secondary px-1 py-0.5 text-xs text-foreground">docs/assets/windform.css</code> file that powers this site is a demo artifact, not a published distribution.
                 </p>
