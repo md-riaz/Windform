@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Windform CDN starter</title>
+    <meta name="description" content="A no-build Windform starter using Tailwind browser utilities and Bootstrap-ready interactions.">
+    <link rel="stylesheet" href="assets/windform.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-background: hsl(var(--background));
+        --color-foreground: hsl(var(--foreground));
+        --color-card: hsl(var(--card));
+        --color-card-foreground: hsl(var(--card-foreground));
+        --color-popover: hsl(var(--popover));
+        --color-popover-foreground: hsl(var(--popover-foreground));
+        --color-primary: hsl(var(--primary));
+        --color-primary-foreground: hsl(var(--primary-foreground));
+        --color-secondary: hsl(var(--secondary));
+        --color-secondary-foreground: hsl(var(--secondary-foreground));
+        --color-muted: hsl(var(--muted));
+        --color-muted-foreground: hsl(var(--muted-foreground));
+        --color-accent: hsl(var(--accent));
+        --color-accent-foreground: hsl(var(--accent-foreground));
+        --color-destructive: hsl(var(--destructive));
+        --color-destructive-foreground: hsl(var(--destructive-foreground));
+        --color-border: hsl(var(--border));
+        --color-input: hsl(var(--input));
+        --color-ring: hsl(var(--ring));
+        --color-success: hsl(var(--success));
+        --color-success-foreground: hsl(var(--success-foreground));
+        --color-warning: hsl(var(--warning));
+        --color-warning-foreground: hsl(var(--warning-foreground));
+        --color-info: hsl(var(--info));
+        --color-info-foreground: hsl(var(--info-foreground));
+        --radius-sm: calc(var(--radius) - 4px);
+        --radius-md: calc(var(--radius) - 2px);
+        --radius-lg: var(--radius);
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-background text-foreground antialiased">
+    <main class="mx-auto flex min-h-screen w-full max-w-5xl flex-col gap-8 px-4 py-10 sm:px-6 lg:px-8">
+      <section class="rounded-3xl border border-border bg-card p-8 shadow-sm">
+        <p class="text-sm font-semibold uppercase tracking-wide text-primary">No-build starter</p>
+        <h1 class="mt-3 text-4xl font-semibold tracking-tight text-foreground">Windform via CDN</h1>
+        <p class="mt-4 max-w-2xl text-muted-foreground">
+          This page uses the published Windform stylesheet, Tailwind's browser compiler, and Bootstrap's bundle. The card, spacing, colors, and text classes are Tailwind-native; the modal and dropdown below use Bootstrap-ready interactions.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#starterModal">Open modal</button>
+          <div class="dropdown">
+            <button class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Open dropdown</button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="docs.html#setup">Read setup docs</a>
+              <a class="dropdown-item" href="components.html">Browse components</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid gap-4 sm:grid-cols-3">
+        <article class="rounded-2xl border border-border bg-card p-5">
+          <h2 class="font-semibold text-card-foreground">Tailwind-native</h2>
+          <p class="mt-2 text-sm text-muted-foreground">Use semantic utilities like <code class="rounded bg-secondary px-1 py-0.5 text-xs text-secondary-foreground">bg-card</code> and <code class="rounded bg-secondary px-1 py-0.5 text-xs text-secondary-foreground">text-primary</code>.</p>
+        </article>
+        <article class="rounded-2xl border border-border bg-card p-5">
+          <h2 class="font-semibold text-card-foreground">Bootstrap-ready</h2>
+          <p class="mt-2 text-sm text-muted-foreground">Keep Bootstrap markup and data attributes for supported interactions.</p>
+        </article>
+        <article class="rounded-2xl border border-border bg-card p-5">
+          <h2 class="font-semibold text-card-foreground">Build later</h2>
+          <p class="mt-2 text-sm text-muted-foreground">Move to the Tailwind build path when you need optimized, self-hosted production CSS.</p>
+        </article>
+      </section>
+    </main>
+
+    <div id="starterModal" class="modal fade" tabindex="-1" aria-labelledby="starterModalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 id="starterModalTitle" class="modal-title">Bootstrap JS is running</h2>
+            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p class="text-muted">Windform owns the visual layer; Bootstrap owns the interaction lifecycle.</p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Close</button>
+            <a class="btn btn-primary" href="docs.html#setup">Setup docs</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

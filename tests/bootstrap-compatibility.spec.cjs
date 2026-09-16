@@ -3,6 +3,7 @@ const { test, expect } = require('@playwright/test');
 
 const cssPath = path.resolve(__dirname, '../docs/assets/windform.css');
 const bootstrapPath = path.resolve(__dirname, '../node_modules/bootstrap/dist/js/bootstrap.bundle.js');
+const cdnStarterPath = path.resolve(__dirname, '../docs/cdn-starter.html');
 
 async function loadRuntime(page, markup) {
   await page.setContent(`<main>${markup}</main>`);
@@ -123,4 +124,15 @@ test('Bootstrap fade carousel clears the departing slide after transition', asyn
   await page.locator('#next').click();
   await expect(page.locator('#two')).toHaveClass(/active/);
   await expect(page.locator('#one')).toHaveCSS('opacity', '0');
+});
+
+test('CDN starter documents token mapping and Bootstrap interactions', async ({ page }) => {
+  await page.route('https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4', (route) => route.fulfill({ contentType: 'application/javascript', body: '' }));
+  await page.route('https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js', (route) => route.fulfill({ path: bootstrapPath }));
+  await page.goto(`file://${cdnStarterPath.replace(/\\/g, '/')}`);
+
+  await expect.poll(() => page.locator('style[type="text/tailwindcss"]').evaluate((node) => node.textContent)).toContain('--color-primary: hsl(var(--primary));');
+  await expect(page.locator('link[rel="stylesheet"]')).toHaveAttribute('href', 'assets/windform.css');
+  await page.locator('[data-bs-target="#starterModal"]').click();
+  await expect(page.locator('#starterModal')).toHaveClass(/show/);
 });
