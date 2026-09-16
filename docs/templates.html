@@ -1,9 +1,9 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Windform — Page templates</title>
+    <title>Windform â€” Page templates</title>
     <meta name="description" content="Responsive Windform page templates for admin dashboards, SaaS CRUD screens, data tables, and application layouts.">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%233b82f6'/%3E%3Cpath fill='white' d='M10.4 23.4a1.2 1.2 0 0 1-1.1-1.7l5.2-12c.4-.9 1.9-.9 2.3 0l5.2 12a1.2 1.2 0 0 1-1.1 1.7h-2.1a1.2 1.2 0 0 1-1.1-.7l-.9-2.1h-3.5l-.9 2.1a1.2 1.2 0 0 1-1.1.7zm6.2-6.2-1.2-2.8-1.2 2.8z'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
@@ -30,7 +30,7 @@
           </nav>
           <div class="flex items-center gap-2">
             <button class="btn btn-outline-secondary md:hidden" type="button" data-bs-toggle="offcanvas" data-bs-target="#templateNav" aria-controls="templateNav">Menu</button>
-            <button type="button" data-theme-toggle aria-label="Switch to dark theme" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-sm font-semibold text-foreground">◐</button>
+            <button type="button" data-theme-toggle aria-label="Switch to dark theme" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-sm font-semibold text-foreground">â—</button>
           </div>
         </div>
       </header>
@@ -124,7 +124,7 @@
         <section id="tables" class="mt-10 rounded-3xl border border-border bg-background p-6 shadow-sm">
           <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"><div><p class="text-sm font-semibold uppercase tracking-wide text-primary">Data tables</p><h2 class="mt-1 text-2xl font-semibold">Usage events</h2></div><input class="form-control max-w-sm" placeholder="Search events" aria-label="Search events"></div>
           <div class="mt-5 overflow-hidden rounded-2xl border border-border bg-card">
-            <div class="table-responsive"><table class="table table-hover mb-0"><thead><tr><th>Event</th><th>User</th><th>Source</th><th>Time</th><th class="text-end">Value</th></tr></thead><tbody><tr><td>checkout.completed</td><td>maya@example.com</td><td>API</td><td>2 min ago</td><td class="text-end">$290</td></tr><tr><td>trial.started</td><td>dev@orbit.io</td><td>Web</td><td>14 min ago</td><td class="text-end">—</td></tr><tr><td>seat.added</td><td>ops@acme.com</td><td>Admin</td><td>1 hr ago</td><td class="text-end">$48</td></tr></tbody></table></div>
+            <div class="table-responsive"><table class="table table-hover mb-0"><thead><tr><th>Event</th><th>User</th><th>Source</th><th>Time</th><th class="text-end">Value</th></tr></thead><tbody><tr><td>checkout.completed</td><td>maya@example.com</td><td>API</td><td>2 min ago</td><td class="text-end">$290</td></tr><tr><td>trial.started</td><td>dev@orbit.io</td><td>Web</td><td>14 min ago</td><td class="text-end">â€”</td></tr><tr><td>seat.added</td><td>ops@acme.com</td><td>Admin</td><td>1 hr ago</td><td class="text-end">$48</td></tr></tbody></table></div>
           </div>
           <nav class="mt-5 flex justify-end" aria-label="Table pagination"><ul class="pagination"><li class="page-item disabled"><span class="page-link">Previous</span></li><li class="page-item active"><span class="page-link">1</span></li><li class="page-item"><a class="page-link" href="#">2</a></li><li class="page-item"><a class="page-link" href="#">Next</a></li></ul></nav>
         </section>
@@ -138,56 +138,87 @@
           </div>
         </section>
 
-        <section id="adminlte-shell" class="mt-10 overflow-hidden rounded-3xl border border-border bg-background shadow-sm">
-          <div class="border-b border-border bg-card px-6 py-5">
-            <p class="text-sm font-semibold uppercase tracking-wide text-primary">AdminLTE-inspired shell</p>
-            <h2 class="mt-1 text-2xl font-semibold">Classic admin preview, shadcn-styled</h2>
-            <p class="mt-2 text-sm text-muted-foreground">A Windform take on the AdminLTE 2 preview set: top bar, sidebar, small boxes, info boxes, sales tabs, todo, chat, calendar, mailbox, and invoice patterns.</p>
-          </div>
-          <div class="grid min-h-[720px] lg:grid-cols-[17rem_1fr]">
-            <aside class="hidden border-r border-border bg-card p-4 lg:block">
-              <div class="flex items-center gap-3 rounded-2xl border border-border bg-background p-3"><span class="avatar h-10 w-10 bg-primary text-primary-foreground">AD</span><div><p class="text-sm font-semibold">Admin demo</p><p class="text-xs text-success">Online</p></div></div>
-              <nav class="mt-5 grid gap-1 text-sm">
-                <a class="rounded-md bg-primary/10 px-3 py-2 font-semibold text-primary" href="#adminlte-shell">Dashboard</a>
-                <button class="flex items-center justify-between rounded-md px-3 py-2 text-muted-foreground hover:bg-accent hover:text-accent-foreground" data-bs-toggle="collapse" data-bs-target="#adminMenuCharts" aria-expanded="false">Charts <span>⌄</span></button>
-                <div id="adminMenuCharts" class="collapse ps-4"><a class="block rounded-md px-3 py-2 text-muted-foreground hover:text-foreground" href="#sales-tab">Sales chart</a><a class="block rounded-md px-3 py-2 text-muted-foreground hover:text-foreground" href="#mailbox-preview">Mailbox</a></div>
-                <a class="rounded-md px-3 py-2 text-muted-foreground hover:bg-accent hover:text-accent-foreground" href="#invoice-preview">Invoice</a>
-                <a class="rounded-md px-3 py-2 text-muted-foreground hover:bg-accent hover:text-accent-foreground" href="#admin-calendar">Calendar</a>
+        <section id="adminlte-shell" class="mt-10 overflow-hidden rounded-[2rem] border border-border bg-background shadow-sm">
+          <div class="grid lg:grid-cols-[18rem_1fr]">
+            <aside class="hidden bg-slate-950 p-5 text-slate-200 lg:block">
+              <a class="flex items-center gap-3" href="#adminlte-shell" aria-label="Windform admin home">
+                <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-primary text-sm font-semibold text-primary-foreground">WF</span>
+                <span><span class="block text-sm font-semibold text-white">Windform Admin</span><span class="block text-xs text-slate-400">Classic shell preview</span></span>
+              </a>
+              <div class="mt-6 rounded-2xl border border-white/10 bg-white/5 p-3">
+                <div class="flex items-center gap-3"><span class="avatar h-10 w-10 rounded-xl bg-primary text-primary-foreground">MR</span><div><p class="text-sm font-semibold text-white">Maya Rahman</p><p class="text-xs text-emerald-300">online · admin</p></div></div>
+              </div>
+              <nav class="mt-6 grid gap-1 text-sm" aria-label="Admin preview navigation">
+                <a class="rounded-xl bg-white px-3 py-2 font-semibold text-slate-950" href="#adminlte-shell">Dashboard</a>
+                <button class="flex items-center justify-between rounded-xl px-3 py-2 text-slate-300 transition hover:bg-white/10 hover:text-white" data-bs-toggle="collapse" data-bs-target="#adminMenuCharts" aria-expanded="false">Analytics <span aria-hidden="true">v</span></button>
+                <div id="adminMenuCharts" class="collapse ps-3"><a class="block rounded-lg px-3 py-2 text-slate-400 hover:text-white" href="#sales-tab">Sales chart</a><a class="block rounded-lg px-3 py-2 text-slate-400 hover:text-white" href="#mailbox-preview">Mailbox</a></div>
+                <a class="rounded-xl px-3 py-2 text-slate-300 transition hover:bg-white/10 hover:text-white" href="#mailbox-preview">Mailbox</a>
+                <a class="rounded-xl px-3 py-2 text-slate-300 transition hover:bg-white/10 hover:text-white" href="#invoice-preview">Invoice</a>
+                <a class="rounded-xl px-3 py-2 text-slate-300 transition hover:bg-white/10 hover:text-white" href="#admin-calendar">Calendar</a>
               </nav>
+              <div class="mt-8 rounded-2xl border border-white/10 bg-white/5 p-4 text-xs text-slate-400">
+                <p class="font-semibold text-slate-100">Template note</p>
+                <p class="mt-2">Use this as an application shell starter, not as a literal AdminLTE dependency.</p>
+              </div>
             </aside>
-            <div class="min-w-0">
-              <div class="flex flex-wrap items-center justify-between gap-3 border-b border-border bg-background px-5 py-3">
-                <div class="flex items-center gap-2"><button class="btn btn-outline-secondary lg:hidden" data-bs-toggle="offcanvas" data-bs-target="#adminMobileNav">Sidebar</button><input class="form-control w-52" placeholder="Search admin" aria-label="Search admin"></div>
-                <div class="flex items-center gap-2">
-                  <div class="dropdown"><button class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">Messages <span class="badge badge-info">4</span></button><div class="dropdown-menu dropdown-menu-end"><span class="dropdown-item-text">4 unread messages</span><button class="dropdown-item">Support reply</button></div></div>
+
+            <div class="min-w-0 bg-muted/30">
+              <div class="flex flex-wrap items-center justify-between gap-3 border-b border-border bg-background px-5 py-4">
+                <div class="flex min-w-0 flex-1 items-center gap-2">
+                  <button class="btn btn-outline-secondary lg:hidden" data-bs-toggle="offcanvas" data-bs-target="#adminMobileNav">Sidebar</button>
+                  <label class="sr-only" for="adminSearch">Search admin</label>
+                  <input id="adminSearch" class="form-control max-w-sm" placeholder="Search orders, members, invoices" aria-label="Search admin">
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                  <div class="dropdown"><button class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">Messages <span class="badge badge-info">4</span></button><div class="dropdown-menu dropdown-menu-end"><span class="dropdown-item-text">4 unread messages</span><button class="dropdown-item">Support reply</button><button class="dropdown-item">New lead note</button></div></div>
                   <div class="dropdown"><button class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">Tasks <span class="badge badge-warning">7</span></button><div class="dropdown-menu dropdown-menu-end"><button class="dropdown-item">Review queue</button><button class="dropdown-item">Ship report</button></div></div>
                 </div>
               </div>
-              <div class="p-5">
-                <div class="flex flex-wrap items-center justify-between gap-3"><div><h3 class="text-xl font-semibold">Dashboard</h3><p class="text-sm text-muted-foreground">Home / dashboard preview</p></div><button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#invoiceStatusModal">Status modal</button></div>
+
+              <div class="p-5 sm:p-6">
+                <div class="flex flex-col gap-4 rounded-3xl border border-border bg-background p-6 shadow-sm md:flex-row md:items-end md:justify-between">
+                  <div>
+                    <p class="text-sm font-semibold uppercase tracking-wide text-primary">AdminLTE-inspired shell</p>
+                    <h2 class="mt-2 text-3xl font-semibold tracking-tight text-foreground">Classic admin preview, redesigned for Windform</h2>
+                    <p class="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">A usable shadcn-styled admin dashboard with the familiar AdminLTE page families: KPI boxes, info boxes, sales charts, todo, chat, calendar, mailbox, and invoice views.</p>
+                  </div>
+                  <button class="btn btn-outline-secondary w-fit" data-bs-toggle="modal" data-bs-target="#invoiceStatusModal">Open status modal</button>
+                </div>
+
                 <div class="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-                  <a class="group rounded-2xl bg-primary p-5 text-primary-foreground" href="#"><p class="text-sm opacity-80">New orders</p><p class="mt-2 text-3xl font-semibold">150</p><p class="mt-3 text-sm opacity-80">More info →</p></a>
-                  <a class="group rounded-2xl bg-success p-5 text-success-foreground" href="#"><p class="text-sm opacity-80">Bounce rate</p><p class="mt-2 text-3xl font-semibold">53%</p><p class="mt-3 text-sm opacity-80">More info →</p></a>
-                  <a class="group rounded-2xl bg-warning p-5 text-warning-foreground" href="#"><p class="text-sm opacity-80">User signups</p><p class="mt-2 text-3xl font-semibold">44</p><p class="mt-3 text-sm opacity-80">More info →</p></a>
-                  <a class="group rounded-2xl bg-info p-5 text-info-foreground" href="#"><p class="text-sm opacity-80">Unique visitors</p><p class="mt-2 text-3xl font-semibold">65k</p><p class="mt-3 text-sm opacity-80">More info →</p></a>
+                  <article class="rounded-3xl border border-border bg-background p-5 shadow-sm"><div class="flex items-start justify-between"><div><p class="text-sm text-muted-foreground">New orders</p><p class="mt-2 text-3xl font-semibold tabular-nums">150</p></div><span class="rounded-2xl bg-primary/10 px-3 py-2 text-primary">↑</span></div><a class="mt-4 inline-flex text-sm font-semibold text-primary hover:text-primary/80" href="#invoice-preview">More info</a></article>
+                  <article class="rounded-3xl border border-border bg-background p-5 shadow-sm"><div class="flex items-start justify-between"><div><p class="text-sm text-muted-foreground">Bounce rate</p><p class="mt-2 text-3xl font-semibold tabular-nums">47.2%</p></div><span class="rounded-2xl bg-warning/10 px-3 py-2 text-warning">%</span></div><a class="mt-4 inline-flex text-sm font-semibold text-primary hover:text-primary/80" href="#sales-tab">More info</a></article>
+                  <article class="rounded-3xl border border-border bg-background p-5 shadow-sm"><div class="flex items-start justify-between"><div><p class="text-sm text-muted-foreground">User signups</p><p class="mt-2 text-3xl font-semibold tabular-nums">44</p></div><span class="rounded-2xl bg-success/10 px-3 py-2 text-success">+</span></div><a class="mt-4 inline-flex text-sm font-semibold text-primary hover:text-primary/80" href="#mailbox-preview">More info</a></article>
+                  <article class="rounded-3xl border border-border bg-background p-5 shadow-sm"><div class="flex items-start justify-between"><div><p class="text-sm text-muted-foreground">Unique visitors</p><p class="mt-2 text-3xl font-semibold tabular-nums">65.4k</p></div><span class="rounded-2xl bg-info/10 px-3 py-2 text-info">?</span></div><a class="mt-4 inline-flex text-sm font-semibold text-primary hover:text-primary/80" href="#admin-calendar">More info</a></article>
                 </div>
-                <div class="mt-4 rounded-2xl border border-border bg-card p-4"><div class="flex items-center gap-4"><span class="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary">↗</span><div class="flex-1"><div class="flex justify-between text-sm"><span class="font-semibold">Inventory fulfillment</span><span>82%</span></div><div class="progress mt-2"><div class="progress-bar" style="width:82%"></div></div><p class="mt-2 text-xs text-muted-foreground">3,200 items shipped this month</p></div></div></div>
-                <div class="mt-5 grid gap-5 xl:grid-cols-[1.2fr_0.8fr]">
-                  <article id="sales-tab" class="rounded-2xl border border-border bg-card p-5"><div class="flex items-center justify-between"><h4 class="font-semibold">Sales analytics</h4><ul class="nav nav-pills"><li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#salesArea">Area</button></li><li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#salesDonut">Donut</button></li></ul></div><div class="tab-content mt-4"><div id="salesArea" class="tab-pane fade show active"><div class="h-48 rounded-xl border border-dashed border-border bg-muted/40 p-4"><div class="h-full rounded-lg bg-gradient-to-tr from-primary/30 via-primary/10 to-transparent"></div></div></div><div id="salesDonut" class="tab-pane fade"><div class="grid h-48 place-items-center rounded-xl border border-dashed border-border bg-muted/40"><div class="h-28 w-28 rounded-full border-[18px] border-primary border-r-warning border-t-success"></div></div></div></div></article>
-                  <article class="rounded-2xl border border-border bg-card p-5"><h4 class="font-semibold">Todo list</h4><div class="mt-4 grid gap-3"><label class="form-check"><input class="form-check-input" type="checkbox"><span class="form-check-label">Design invoice empty state <span class="badge badge-warning ms-2">Today</span></span></label><label class="form-check"><input class="form-check-input" type="checkbox" checked><span class="form-check-label">Review mailbox toolbar</span></label><label class="form-check"><input class="form-check-input" type="checkbox"><span class="form-check-label">Ship dashboard preview</span></label></div></article>
+
+                <div class="mt-5 rounded-3xl border border-border bg-background p-5 shadow-sm">
+                  <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"><div><p class="font-semibold">Inventory fulfillment</p><p class="text-sm text-muted-foreground">3,217 items shipped this month</p></div><span class="badge badge-success">82% complete</span></div>
+                  <div class="progress mt-4"><div class="progress-bar" style="width:82%"></div></div>
                 </div>
+
+                <div class="mt-5 grid gap-5 xl:grid-cols-[1.35fr_0.85fr]">
+                  <article id="sales-tab" class="rounded-3xl border border-border bg-background p-5 shadow-sm">
+                    <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"><div><h3 class="font-semibold">Sales analytics</h3><p class="text-sm text-muted-foreground">Static chart placeholders ready for your chart library.</p></div><ul class="nav nav-pills"><li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#salesArea">Area</button></li><li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#salesDonut">Donut</button></li></ul></div>
+                    <div class="tab-content mt-4"><div id="salesArea" class="tab-pane fade show active"><div class="relative h-64 overflow-hidden rounded-2xl border border-border bg-muted/40 p-4"><svg class="h-full w-full" viewBox="0 0 600 220" role="img" aria-label="Sales area chart placeholder"><path d="M0 190 C80 120 130 170 210 95 C290 20 355 110 430 70 C510 25 560 80 600 45" fill="none" stroke="currentColor" stroke-width="6" class="text-primary"/><path d="M0 190 C80 120 130 170 210 95 C290 20 355 110 430 70 C510 25 560 80 600 45 V220 H0 Z" class="fill-primary/10"/></svg></div></div><div id="salesDonut" class="tab-pane fade"><div class="grid h-64 place-items-center rounded-2xl border border-border bg-muted/40"><div class="h-36 w-36 rounded-full border-[22px] border-primary border-r-warning border-t-success shadow-inner"></div></div></div></div>
+                  </article>
+
+                  <article class="rounded-3xl border border-border bg-background p-5 shadow-sm"><h3 class="font-semibold">Todo list</h3><div class="mt-4 grid gap-3"><label class="form-check rounded-2xl border border-border p-3"><input class="form-check-input" type="checkbox"><span class="form-check-label">Design invoice empty state <span class="badge badge-warning ms-2">Today</span></span></label><label class="form-check rounded-2xl border border-border p-3"><input class="form-check-input" type="checkbox" checked><span class="form-check-label">Review mailbox toolbar</span></label><label class="form-check rounded-2xl border border-border p-3"><input class="form-check-input" type="checkbox"><span class="form-check-label">Ship dashboard preview</span></label></div></article>
+                </div>
+
                 <div class="mt-5 grid gap-5 xl:grid-cols-3">
-                  <article class="rounded-2xl border border-border bg-card p-5"><h4 class="font-semibold">Direct chat</h4><div class="mt-4 space-y-3 text-sm"><p class="rounded-2xl bg-muted p-3">Can you review the latest order?</p><p class="ml-auto rounded-2xl bg-primary p-3 text-primary-foreground">Done — added a note.</p></div><input class="form-control mt-4" placeholder="Type message"></article>
-                  <article id="admin-calendar" class="rounded-2xl border border-border bg-card p-5"><h4 class="font-semibold">Calendar</h4><div class="mt-4 grid grid-cols-7 gap-1 text-center text-xs"><span class="text-muted-foreground">M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span><span class="rounded bg-muted p-2">1</span><span class="rounded bg-primary p-2 text-primary-foreground">2</span><span class="rounded bg-muted p-2">3</span><span class="rounded bg-muted p-2">4</span><span class="rounded bg-muted p-2">5</span><span class="rounded bg-muted p-2">6</span><span class="rounded bg-muted p-2">7</span></div></article>
-                  <article class="rounded-2xl border border-border bg-card p-5"><h4 class="font-semibold">Recent members</h4><div class="mt-4 flex -space-x-2"><span class="avatar border-2 border-card bg-primary text-primary-foreground">MC</span><span class="avatar border-2 border-card bg-secondary">JS</span><span class="avatar border-2 border-card bg-accent">AK</span></div><p class="mt-4 text-sm text-muted-foreground">8 new members joined this week.</p></article>
+                  <article class="rounded-3xl border border-border bg-background p-5 shadow-sm"><h3 class="font-semibold">Direct chat</h3><div class="mt-4 space-y-3 text-sm"><p class="max-w-[85%] rounded-2xl bg-muted p-3">Can you review the latest order?</p><p class="ml-auto max-w-[85%] rounded-2xl bg-primary p-3 text-primary-foreground">Done — I added a note.</p></div><label class="sr-only" for="chatMessage">Type message</label><input id="chatMessage" class="form-control mt-4" placeholder="Type message"></article>
+                  <article id="admin-calendar" class="rounded-3xl border border-border bg-background p-5 shadow-sm"><h3 class="font-semibold">Calendar</h3><div class="mt-4 grid grid-cols-7 gap-1 text-center text-xs"><span class="text-muted-foreground">M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span><span class="rounded bg-muted p-2">1</span><span class="rounded bg-primary p-2 text-primary-foreground">2</span><span class="rounded bg-muted p-2">3</span><span class="rounded bg-muted p-2">4</span><span class="rounded bg-muted p-2">5</span><span class="rounded bg-muted p-2">6</span><span class="rounded bg-muted p-2">7</span></div><p class="mt-4 text-sm text-muted-foreground">Two onboarding calls scheduled today.</p></article>
+                  <article class="rounded-3xl border border-border bg-background p-5 shadow-sm"><h3 class="font-semibold">Recent members</h3><div class="mt-4 flex -space-x-2"><span class="avatar border-2 border-background bg-primary text-primary-foreground">MC</span><span class="avatar border-2 border-background bg-secondary">JS</span><span class="avatar border-2 border-background bg-accent">AK</span></div><p class="mt-4 text-sm text-muted-foreground">8 new members joined this week.</p></article>
                 </div>
-                <div id="mailbox-preview" class="mt-5 grid gap-5 xl:grid-cols-[16rem_1fr]"><aside class="rounded-2xl border border-border bg-card p-4"><h4 class="font-semibold">Mailbox</h4><nav class="mt-4 grid gap-1 text-sm"><a class="rounded bg-primary/10 px-3 py-2 text-primary" href="#">Inbox <span class="badge badge-primary float-end">12</span></a><a class="px-3 py-2 text-muted-foreground" href="#">Sent</a><a class="px-3 py-2 text-muted-foreground" href="#">Drafts</a></nav></aside><article class="overflow-hidden rounded-2xl border border-border bg-card"><div class="border-b border-border p-3"><button class="btn btn-outline-secondary btn-sm">Archive</button></div><table class="table mb-0"><tbody><tr><td><input class="form-check-input" type="checkbox"></td><td class="font-semibold">Support</td><td>Welcome to Windform admin</td><td class="text-end">2m</td></tr><tr><td><input class="form-check-input" type="checkbox"></td><td>Billing</td><td>Invoice paid</td><td class="text-end">1h</td></tr></tbody></table></article></div>
-                <div id="invoice-preview" class="mt-5 rounded-2xl border border-border bg-card p-5"><div class="flex flex-wrap justify-between gap-4"><div><h4 class="text-xl font-semibold">Invoice #WF-2048</h4><p class="text-sm text-muted-foreground">Issued to Acme Inc.</p></div><div class="flex gap-2"><button class="btn btn-outline-secondary">Print</button><div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Download</button><div class="dropdown-menu dropdown-menu-end"><button class="dropdown-item">PDF</button><button class="dropdown-item">CSV</button></div></div></div></div><div class="mt-5 table-responsive"><table class="table"><thead><tr><th>Item</th><th>Qty</th><th class="text-end">Total</th></tr></thead><tbody><tr><td>Windform Pro</td><td>12</td><td class="text-end">$1,188</td></tr><tr><td>Support package</td><td>1</td><td class="text-end">$299</td></tr></tbody></table></div><p class="text-end text-xl font-semibold">Total $1,487</p></div>
+
+                <div id="mailbox-preview" class="mt-5 grid gap-5 xl:grid-cols-[16rem_1fr]"><aside class="rounded-3xl border border-border bg-background p-4 shadow-sm"><h3 class="font-semibold">Mailbox</h3><nav class="mt-4 grid gap-1 text-sm"><a class="rounded-xl bg-primary/10 px-3 py-2 text-primary" href="#">Inbox <span class="badge badge-primary float-end">12</span></a><a class="rounded-xl px-3 py-2 text-muted-foreground hover:bg-muted" href="#">Sent</a><a class="rounded-xl px-3 py-2 text-muted-foreground hover:bg-muted" href="#">Drafts</a></nav></aside><article class="overflow-hidden rounded-3xl border border-border bg-background shadow-sm"><div class="flex items-center justify-between border-b border-border p-3"><button class="btn btn-outline-secondary btn-sm">Archive</button><span class="text-xs text-muted-foreground">1-2 of 12</span></div><table class="table mb-0"><tbody><tr><td><input class="form-check-input" type="checkbox"></td><td class="font-semibold">Support</td><td>Welcome to Windform admin</td><td class="text-end">2m</td></tr><tr><td><input class="form-check-input" type="checkbox"></td><td>Billing</td><td>Invoice paid</td><td class="text-end">1h</td></tr></tbody></table></article></div>
+
+                <div id="invoice-preview" class="mt-5 rounded-3xl border border-border bg-background p-5 shadow-sm"><div class="flex flex-wrap justify-between gap-4"><div><h3 class="text-xl font-semibold">Invoice #WF-2048</h3><p class="text-sm text-muted-foreground">Issued to Bayleaf Systems · due Sep 30</p></div><div class="flex gap-2"><button class="btn btn-outline-secondary">Print</button><div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Download</button><div class="dropdown-menu dropdown-menu-end"><button class="dropdown-item">PDF</button><button class="dropdown-item">CSV</button></div></div></div></div><div class="mt-5 table-responsive"><table class="table"><thead><tr><th>Item</th><th>Qty</th><th class="text-end">Total</th></tr></thead><tbody><tr><td>Windform Pro</td><td>12</td><td class="text-end">$1,188</td></tr><tr><td>Support package</td><td>1</td><td class="text-end">$299</td></tr></tbody></table></div><p class="text-end text-xl font-semibold">Total $1,487</p></div>
               </div>
             </div>
           </div>
-        </section>
-      </main>
+        </section>      </main>
     </div>
 
     <div id="adminMobileNav" class="offcanvas offcanvas-start" tabindex="-1" aria-labelledby="adminMobileNavTitle">
