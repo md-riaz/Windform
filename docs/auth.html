@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Windform — Auth templates</title>
+    <meta name="description" content="Windform authentication page templates for login, registration, forgot password, reset password, and 2FA verification.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%233b82f6'/%3E%3Cpath fill='white' d='M10.4 23.4a1.2 1.2 0 0 1-1.1-1.7l5.2-12c.4-.9 1.9-.9 2.3 0l5.2 12a1.2 1.2 0 0 1-1.1 1.7h-2.1a1.2 1.2 0 0 1-1.1-.7l-.9-2.1h-3.5l-.9 2.1a1.2 1.2 0 0 1-1.1.7zm6.2-6.2-1.2-2.8-1.2 2.8z'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="assets/windform.css">
+    <link rel="stylesheet" href="assets/typography-overrides.css">
+    <script defer src="assets/theme-toggle.js"></script>
+  </head>
+  <body id="top" class="bg-background text-foreground antialiased" data-theme="light" data-site-root>
+    <div class="min-h-screen bg-muted/30">
+      <header class="border-b border-border/80 bg-background/90 backdrop-blur">
+        <div class="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+          <a class="flex items-center gap-2 text-base font-semibold" href="index.html"><span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary">W</span>Windform Auth</a>
+          <nav class="hidden items-center gap-5 text-sm font-medium md:flex">
+            <a class="text-muted-foreground hover:text-foreground" href="index.html">Overview</a>
+            <a class="text-muted-foreground hover:text-foreground" href="components.html">Components</a>
+            <a class="text-muted-foreground hover:text-foreground" href="blocks.html">Blocks</a>
+            <a class="text-muted-foreground hover:text-foreground" href="templates.html">Templates</a>
+            <a class="text-foreground" href="auth.html">Auth</a>
+            <a class="text-muted-foreground hover:text-foreground" href="docs.html">Docs</a>
+          </nav>
+          <button type="button" data-theme-toggle aria-label="Switch to dark theme" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-sm font-semibold text-foreground">◐</button>
+        </div>
+      </header>
+
+      <main class="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+        <section class="grid gap-8 rounded-3xl border border-border bg-background p-6 shadow-sm lg:grid-cols-[0.9fr_1.1fr] lg:p-8">
+          <div class="flex flex-col justify-between gap-8 rounded-2xl bg-primary p-8 text-primary-foreground">
+            <div>
+              <span class="inline-flex rounded-full bg-primary-foreground/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide">Authentication templates</span>
+              <h1 class="mt-6 text-4xl font-semibold tracking-tight sm:text-5xl">Consistent auth flows with Windform tokens</h1>
+              <p class="mt-4 text-sm leading-relaxed text-primary-foreground/80">Login, registration, password recovery, reset, and two-factor verification templates built with Tailwind-native layout utilities and Windform form/button styles.</p>
+            </div>
+            <div class="grid gap-3 text-sm text-primary-foreground/80 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+              <div class="rounded-2xl border border-primary-foreground/20 bg-primary-foreground/10 p-4"><p class="font-semibold text-primary-foreground">Accessible labels</p><p class="mt-1">Every field has explicit labels and helper text.</p></div>
+              <div class="rounded-2xl border border-primary-foreground/20 bg-primary-foreground/10 p-4"><p class="font-semibold text-primary-foreground">Backend agnostic</p><p class="mt-1">Wire forms to Laravel, Rails, Next.js, Django, or plain HTML.</p></div>
+            </div>
+          </div>
+
+          <section id="login" class="rounded-2xl border border-border bg-card p-6 shadow-sm">
+            <div class="mx-auto max-w-md">
+              <p class="text-sm font-semibold uppercase tracking-wide text-primary">Login</p>
+              <h2 class="mt-2 text-2xl font-semibold text-card-foreground">Welcome back</h2>
+              <p class="mt-2 text-sm text-muted-foreground">Use your workspace email to continue.</p>
+              <form class="mt-6 grid gap-4">
+                <div><label class="form-label" for="loginEmail">Email</label><input id="loginEmail" class="form-control" type="email" autocomplete="email" placeholder="you@example.com"></div>
+                <div><div class="flex items-center justify-between"><label class="form-label" for="loginPassword">Password</label><a class="text-xs font-semibold text-primary hover:text-primary/80" href="#forgot">Forgot?</a></div><input id="loginPassword" class="form-control" type="password" autocomplete="current-password" placeholder="••••••••"></div>
+                <label class="form-check"><input class="form-check-input" type="checkbox"><span class="form-check-label">Remember this device</span></label>
+                <button class="btn btn-primary w-full" type="submit">Sign in</button>
+              </form>
+              <p class="mt-6 text-center text-sm text-muted-foreground">No account? <a class="font-semibold text-primary hover:text-primary/80" href="#register">Create one</a></p>
+            </div>
+          </section>
+        </section>
+
+        <section class="mt-8 grid gap-8 lg:grid-cols-2">
+          <article id="register" class="rounded-3xl border border-border bg-background p-6 shadow-sm">
+            <div class="mx-auto max-w-md">
+              <p class="text-sm font-semibold uppercase tracking-wide text-primary">Register</p>
+              <h2 class="mt-2 text-2xl font-semibold">Create your workspace</h2>
+              <p class="mt-2 text-sm text-muted-foreground">Start with a clean account and invite your team later.</p>
+              <form class="mt-6 grid gap-4">
+                <div><label class="form-label" for="registerName">Full name</label><input id="registerName" class="form-control" autocomplete="name" placeholder="Maya Chen"></div>
+                <div><label class="form-label" for="registerEmail">Work email</label><input id="registerEmail" class="form-control" type="email" autocomplete="email" placeholder="maya@company.com"></div>
+                <div><label class="form-label" for="registerPassword">Password</label><input id="registerPassword" class="form-control" type="password" autocomplete="new-password" placeholder="Create a password"></div>
+                <label class="form-check"><input class="form-check-input" type="checkbox"><span class="form-check-label">I agree to the terms and privacy policy</span></label>
+                <button class="btn btn-primary w-full" type="submit">Create account</button>
+              </form>
+            </div>
+          </article>
+
+          <article id="forgot" class="rounded-3xl border border-border bg-background p-6 shadow-sm">
+            <div class="mx-auto max-w-md">
+              <p class="text-sm font-semibold uppercase tracking-wide text-primary">Forgot password</p>
+              <h2 class="mt-2 text-2xl font-semibold">Recover access</h2>
+              <p class="mt-2 text-sm text-muted-foreground">Enter your email and we will send a secure reset link if the account exists.</p>
+              <form class="mt-6 grid gap-4">
+                <div><label class="form-label" for="forgotEmail">Email</label><input id="forgotEmail" class="form-control" type="email" autocomplete="email" placeholder="you@example.com"></div>
+                <button class="btn btn-primary w-full" type="submit">Send reset link</button>
+              </form>
+              <div class="alert alert-info mt-5" role="status">For security, show the same confirmation message whether or not the email exists.</div>
+            </div>
+          </article>
+
+          <article id="reset" class="rounded-3xl border border-border bg-background p-6 shadow-sm">
+            <div class="mx-auto max-w-md">
+              <p class="text-sm font-semibold uppercase tracking-wide text-primary">Reset password</p>
+              <h2 class="mt-2 text-2xl font-semibold">Choose a new password</h2>
+              <form class="mt-6 grid gap-4">
+                <div><label class="form-label" for="resetPassword">New password</label><input id="resetPassword" class="form-control" type="password" autocomplete="new-password"></div>
+                <div><label class="form-label" for="resetConfirm">Confirm password</label><input id="resetConfirm" class="form-control" type="password" autocomplete="new-password"></div>
+                <div class="progress" aria-label="Password strength"><div class="progress-bar bg-success" style="width: 72%"></div></div>
+                <button class="btn btn-primary w-full" type="submit">Update password</button>
+              </form>
+            </div>
+          </article>
+
+          <article id="verify" class="rounded-3xl border border-border bg-background p-6 shadow-sm">
+            <div class="mx-auto max-w-md text-center">
+              <p class="text-sm font-semibold uppercase tracking-wide text-primary">2FA verification</p>
+              <h2 class="mt-2 text-2xl font-semibold">Enter your security code</h2>
+              <p class="mt-2 text-sm text-muted-foreground">We sent a six-digit code to your authenticator app or trusted device.</p>
+              <form class="mt-6 grid gap-5">
+                <fieldset>
+                  <legend class="sr-only">Verification code</legend>
+                  <div class="grid grid-cols-6 gap-2">
+                    <input class="form-control text-center text-lg font-semibold" inputmode="numeric" maxlength="1" aria-label="Digit 1">
+                    <input class="form-control text-center text-lg font-semibold" inputmode="numeric" maxlength="1" aria-label="Digit 2">
+                    <input class="form-control text-center text-lg font-semibold" inputmode="numeric" maxlength="1" aria-label="Digit 3">
+                    <input class="form-control text-center text-lg font-semibold" inputmode="numeric" maxlength="1" aria-label="Digit 4">
+                    <input class="form-control text-center text-lg font-semibold" inputmode="numeric" maxlength="1" aria-label="Digit 5">
+                    <input class="form-control text-center text-lg font-semibold" inputmode="numeric" maxlength="1" aria-label="Digit 6">
+                  </div>
+                </fieldset>
+                <button class="btn btn-primary w-full" type="submit">Verify account</button>
+              </form>
+              <p class="mt-5 text-sm text-muted-foreground">Didn&rsquo;t get a code? <a class="font-semibold text-primary hover:text-primary/80" href="#">Resend</a></p>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

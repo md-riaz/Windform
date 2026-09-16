@@ -5,6 +5,7 @@ const cssPath = path.resolve(__dirname, '../docs/assets/windform.css');
 const bootstrapPath = path.resolve(__dirname, '../node_modules/bootstrap/dist/js/bootstrap.bundle.js');
 const cdnStarterPath = path.resolve(__dirname, '../docs/cdn-starter.html');
 const templatesPath = path.resolve(__dirname, '../docs/templates.html');
+const authPath = path.resolve(__dirname, '../docs/auth.html');
 
 async function loadRuntime(page, markup) {
   await page.setContent(`<main>${markup}</main>`);
@@ -151,4 +152,16 @@ test('Application templates expose responsive CRUD and layout interactions', asy
   await expect(page.locator('#customerModal')).not.toHaveClass(/show/);
   await page.locator('[data-bs-target="#settings-panel"]').click();
   await expect(page.locator('#settings-panel')).toHaveClass(/active/);
+});
+
+test('Auth templates include the complete account access flow', async ({ page }) => {
+  await page.goto(`file://${authPath.replace(/\\/g, '/')}`);
+
+  await expect(page.locator('#login')).toContainText('Welcome back');
+  await expect(page.locator('#register')).toContainText('Create your workspace');
+  await expect(page.locator('#forgot')).toContainText('Recover access');
+  await expect(page.locator('#reset')).toContainText('Choose a new password');
+  await expect(page.locator('#verify input[aria-label^="Digit"]')).toHaveCount(6);
+  await expect(page.locator('input[autocomplete="current-password"]')).toHaveCount(1);
+  await expect(page.locator('input[autocomplete="new-password"]')).toHaveCount(3);
 });
