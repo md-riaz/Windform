@@ -122,6 +122,20 @@
               <p class="mt-5 text-sm text-muted-foreground">Didn&rsquo;t get a code? <a class="font-semibold text-primary hover:text-primary/80" href="#">Resend</a></p>
             </div>
           </article>
+
+          <article id="lockscreen" class="rounded-3xl border border-border bg-background p-6 shadow-sm lg:col-span-2">
+            <div class="mx-auto flex max-w-md flex-col items-center text-center">
+              <span class="avatar h-20 w-20 bg-primary text-2xl text-primary-foreground">MC</span>
+              <p class="mt-4 text-sm font-semibold uppercase tracking-wide text-primary">Lockscreen</p>
+              <h2 class="mt-2 text-2xl font-semibold">Session locked</h2>
+              <p class="mt-2 text-sm text-muted-foreground">Maya Chen is still signed in. Re-enter your password to continue or switch accounts.</p>
+              <form class="mt-6 grid w-full gap-4 text-left">
+                <div><label class="form-label" for="lockPassword">Password</label><input id="lockPassword" class="form-control" type="password" autocomplete="current-password" placeholder="••••••••"></div>
+                <button class="btn btn-primary w-full" type="submit">Unlock</button>
+              </form>
+              <div class="mt-5 flex flex-wrap justify-center gap-3 text-sm"><a class="font-semibold text-primary hover:text-primary/80" href="#login">Switch account</a><span class="text-muted-foreground">·</span><a class="font-semibold text-primary hover:text-primary/80" href="#">Sign out</a></div>
+            </div>
+          </article>
         </section>
       </main>
     </div>

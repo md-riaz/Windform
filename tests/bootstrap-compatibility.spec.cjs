@@ -154,6 +154,24 @@ test('Application templates expose responsive CRUD and layout interactions', asy
   await expect(page.locator('#settings-panel')).toHaveClass(/active/);
 });
 
+test('AdminLTE-inspired template exposes dashboard app families', async ({ page }) => {
+  await page.route('https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js', (route) => route.fulfill({ path: bootstrapPath }));
+  await page.goto(`file://${templatesPath.replace(/\\/g, '/')}`);
+
+  await expect(page.locator('#adminlte-shell')).toContainText('Classic admin preview');
+  await expect(page.locator('#adminlte-shell')).toContainText('New orders');
+  await expect(page.locator('#mailbox-preview')).toContainText('Welcome to Windform admin');
+  await expect(page.locator('#invoice-preview')).toContainText('Invoice #WF-2048');
+  await page.locator('[data-bs-target="#adminMenuCharts"]').click();
+  await expect(page.locator('#adminMenuCharts')).toHaveClass(/show/);
+  await page.locator('[data-bs-target="#salesDonut"]').click();
+  await expect(page.locator('#salesDonut')).toHaveClass(/active/);
+  await page.locator('[data-bs-target="#invoiceStatusModal"]').click();
+  await expect(page.locator('#invoiceStatusModal')).toHaveClass(/show/);
+  await page.locator('#invoiceStatusModal .btn-close').click();
+  await expect(page.locator('#invoiceStatusModal')).not.toHaveClass(/show/);
+});
+
 test('Auth templates include the complete account access flow', async ({ page }) => {
   await page.goto(`file://${authPath.replace(/\\/g, '/')}`);
 
@@ -162,6 +180,8 @@ test('Auth templates include the complete account access flow', async ({ page })
   await expect(page.locator('#forgot')).toContainText('Recover access');
   await expect(page.locator('#reset')).toContainText('Choose a new password');
   await expect(page.locator('#verify input[aria-label^="Digit"]')).toHaveCount(6);
-  await expect(page.locator('input[autocomplete="current-password"]')).toHaveCount(1);
+  await expect(page.locator('#lockscreen')).toContainText('Session locked');
+  await expect(page.locator('#lockPassword')).toHaveAttribute('autocomplete', 'current-password');
+  await expect(page.locator('input[autocomplete="current-password"]')).toHaveCount(2);
   await expect(page.locator('input[autocomplete="new-password"]')).toHaveCount(3);
 });
