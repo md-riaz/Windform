@@ -38,7 +38,7 @@
   },
   "scripts": {
     "build": "tailwindcss -i ./src/windform.css -o ./docs/assets/windform.css --minify",
-    "check": "npm run build && node ./scripts/check-build.cjs && node ./scripts/check-package.cjs",
+    "check": "npm run build && node ./scripts/check-build.cjs && node ./scripts/check-package.cjs && node ./scripts/check-mojibake.cjs",
     "test:compat": "playwright test",
     "test:a11y": "playwright test --grep @a11y",
     "test": "npm run check && npm run test:compat",
