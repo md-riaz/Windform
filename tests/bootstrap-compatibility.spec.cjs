@@ -146,6 +146,8 @@ test('Application templates expose responsive CRUD and layout interactions', asy
   await expect(page.locator('#admin')).toContainText('Operations overview');
   await expect(page.locator('#crud')).toContainText('Customers');
   await expect(page.locator('#tables table tbody tr')).toHaveCount(3);
+  await expect(page.locator('#tables table tbody tr').nth(1).locator('td').last()).toHaveText('—');
+  await expect(page.locator('#segment')).toHaveCSS('appearance', 'none');
   await page.locator('[data-bs-target="#customerModal"]').click();
   await expect(page.locator('#customerModal')).toHaveClass(/show/);
   await page.locator('#customerModal .btn-close').click();
