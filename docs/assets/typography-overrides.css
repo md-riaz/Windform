@@ -1,5 +1,5 @@
 /* Documentation-specific typography overrides */
-p {
+p:not([class*="text-"]) {
   color: hsl(var(--foreground));
 }
 
