@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Windform — Page templates</title>
+    <meta name="description" content="Responsive Windform page templates for admin dashboards, SaaS CRUD screens, data tables, and application layouts.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%233b82f6'/%3E%3Cpath fill='white' d='M10.4 23.4a1.2 1.2 0 0 1-1.1-1.7l5.2-12c.4-.9 1.9-.9 2.3 0l5.2 12a1.2 1.2 0 0 1-1.1 1.7h-2.1a1.2 1.2 0 0 1-1.1-.7l-.9-2.1h-3.5l-.9 2.1a1.2 1.2 0 0 1-1.1.7zm6.2-6.2-1.2-2.8-1.2 2.8z'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="assets/windform.css">
+    <link rel="stylesheet" href="assets/typography-overrides.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="assets/theme-toggle.js"></script>
+  </head>
+  <body id="top" class="bg-background text-foreground antialiased" data-theme="light" data-site-root>
+    <div class="min-h-screen bg-muted/30">
+      <header class="sticky top-0 z-40 border-b border-border/80 bg-background/90 backdrop-blur">
+        <div class="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+          <a class="flex items-center gap-2 text-base font-semibold" href="index.html">
+            <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary">W</span>
+            Windform Templates
+          </a>
+          <nav class="hidden items-center gap-5 text-sm font-medium md:flex">
+            <a class="text-muted-foreground hover:text-foreground" href="index.html">Overview</a>
+            <a class="text-muted-foreground hover:text-foreground" href="components.html">Components</a>
+            <a class="text-muted-foreground hover:text-foreground" href="blocks.html">Blocks</a>
+            <a class="text-foreground" href="templates.html">Templates</a>
+            <a class="text-muted-foreground hover:text-foreground" href="docs.html">Docs</a>
+          </nav>
+          <div class="flex items-center gap-2">
+            <button class="btn btn-outline-secondary md:hidden" type="button" data-bs-toggle="offcanvas" data-bs-target="#templateNav" aria-controls="templateNav">Menu</button>
+            <button type="button" data-theme-toggle aria-label="Switch to dark theme" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-sm font-semibold text-foreground">◐</button>
+          </div>
+        </div>
+      </header>
+
+      <div id="templateNav" class="offcanvas offcanvas-start" tabindex="-1" aria-labelledby="templateNavTitle">
+        <div class="offcanvas-header">
+          <h2 id="templateNavTitle" class="offcanvas-title">Templates</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <nav class="grid gap-2 text-sm font-medium">
+            <a class="rounded-md px-3 py-2 text-muted-foreground hover:bg-accent hover:text-accent-foreground" href="#admin">Admin dashboard</a>
+            <a class="rounded-md px-3 py-2 text-muted-foreground hover:bg-accent hover:text-accent-foreground" href="#crud">SaaS CRUD</a>
+            <a class="rounded-md px-3 py-2 text-muted-foreground hover:bg-accent hover:text-accent-foreground" href="#tables">Data tables</a>
+            <a class="rounded-md px-3 py-2 text-muted-foreground hover:bg-accent hover:text-accent-foreground" href="#layout">Responsive app shell</a>
+          </nav>
+        </div>
+      </div>
+
+      <main class="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+        <section class="rounded-3xl border border-border bg-background p-8 shadow-sm">
+          <span class="inline-flex rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">Page templates</span>
+          <div class="mt-5 grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+            <div>
+              <h1 class="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">Application screens built from Windform components</h1>
+              <p class="mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground">Copy responsive admin dashboards, SaaS CRUD screens, data-driven tables, and app shells. Templates use Tailwind-native layout utilities, Windform tokens, and Bootstrap JS only for interactions such as modals, dropdowns, tabs, and offcanvas navigation.</p>
+            </div>
+            <div class="rounded-2xl border border-border bg-card p-5 text-sm text-muted-foreground">
+              <p class="font-semibold text-foreground">Two-path friendly</p>
+              <p class="mt-2">Use these with the no-build CDN starter while prototyping, then move the same markup to your optimized Tailwind build.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="admin" class="mt-10 rounded-3xl border border-border bg-background p-6 shadow-sm">
+          <div class="flex flex-col gap-3 border-b border-border pb-5 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-wide text-primary">Admin dashboard</p>
+              <h2 class="mt-1 text-2xl font-semibold text-foreground">Operations overview</h2>
+            </div>
+            <div class="dropdown">
+              <button class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">Export</button>
+              <div class="dropdown-menu dropdown-menu-end"><button class="dropdown-item">CSV</button><button class="dropdown-item">PDF</button></div>
+            </div>
+          </div>
+          <div class="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            <article class="rounded-2xl border border-border bg-card p-5"><p class="text-sm text-muted-foreground">Revenue</p><p class="mt-2 text-2xl font-semibold">$128.4k</p><span class="badge badge-success mt-3">+12.8%</span></article>
+            <article class="rounded-2xl border border-border bg-card p-5"><p class="text-sm text-muted-foreground">Active users</p><p class="mt-2 text-2xl font-semibold">24,892</p><span class="badge badge-info mt-3">Live</span></article>
+            <article class="rounded-2xl border border-border bg-card p-5"><p class="text-sm text-muted-foreground">Open tickets</p><p class="mt-2 text-2xl font-semibold">318</p><span class="badge badge-warning mt-3">Needs review</span></article>
+            <article class="rounded-2xl border border-border bg-card p-5"><p class="text-sm text-muted-foreground">Churn risk</p><p class="mt-2 text-2xl font-semibold">2.4%</p><span class="badge badge-secondary mt-3">Stable</span></article>
+          </div>
+          <div class="mt-6 grid gap-6 lg:grid-cols-[1fr_22rem]">
+            <article class="rounded-2xl border border-border bg-card p-5">
+              <div class="flex items-center justify-between"><h3 class="font-semibold">Pipeline health</h3><span class="text-sm text-muted-foreground">Last 30 days</span></div>
+              <div class="mt-5 space-y-4">
+                <div><div class="mb-2 flex justify-between text-sm"><span>Activation</span><span>82%</span></div><div class="progress"><div class="progress-bar" style="width:82%"></div></div></div>
+                <div><div class="mb-2 flex justify-between text-sm"><span>Retention</span><span>68%</span></div><div class="progress"><div class="progress-bar bg-success" style="width:68%"></div></div></div>
+                <div><div class="mb-2 flex justify-between text-sm"><span>Expansion</span><span>44%</span></div><div class="progress"><div class="progress-bar bg-warning" style="width:44%"></div></div></div>
+              </div>
+            </article>
+            <article class="rounded-2xl border border-border bg-card p-5">
+              <h3 class="font-semibold">Recent activity</h3>
+              <div class="mt-4 list-group"><a class="list-group-item list-group-item-action" href="#">New enterprise lead</a><a class="list-group-item list-group-item-action" href="#">Invoice paid</a><a class="list-group-item list-group-item-action" href="#">Deploy completed</a></div>
+            </article>
+          </div>
+        </section>
+
+        <section id="crud" class="mt-10 rounded-3xl border border-border bg-background p-6 shadow-sm">
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div><p class="text-sm font-semibold uppercase tracking-wide text-primary">SaaS CRUD</p><h2 class="mt-1 text-2xl font-semibold">Customers</h2></div>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#customerModal">Add customer</button>
+          </div>
+          <div class="mt-5 grid gap-4 lg:grid-cols-[16rem_1fr]">
+            <aside class="rounded-2xl border border-border bg-card p-4">
+              <label class="form-label" for="segment">Segment</label>
+              <select id="segment" class="form-select"><option>All accounts</option><option>Enterprise</option><option>Trial</option></select>
+              <label class="form-label mt-4" for="health">Health</label>
+              <select id="health" class="form-select"><option>Any health</option><option>Green</option><option>At risk</option></select>
+            </aside>
+            <div class="overflow-hidden rounded-2xl border border-border bg-card">
+              <div class="table-responsive">
+                <table class="table mb-0">
+                  <thead><tr><th>Account</th><th>Plan</th><th>Status</th><th class="text-end">MRR</th></tr></thead>
+                  <tbody><tr><td>Acme Inc.</td><td>Scale</td><td><span class="badge badge-success">Healthy</span></td><td class="text-end">$8,400</td></tr><tr><td>Northstar</td><td>Pro</td><td><span class="badge badge-warning">Review</span></td><td class="text-end">$2,100</td></tr><tr><td>Orbit Labs</td><td>Trial</td><td><span class="badge badge-info">Onboarding</span></td><td class="text-end">$0</td></tr></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="tables" class="mt-10 rounded-3xl border border-border bg-background p-6 shadow-sm">
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"><div><p class="text-sm font-semibold uppercase tracking-wide text-primary">Data tables</p><h2 class="mt-1 text-2xl font-semibold">Usage events</h2></div><input class="form-control max-w-sm" placeholder="Search events" aria-label="Search events"></div>
+          <div class="mt-5 overflow-hidden rounded-2xl border border-border bg-card">
+            <div class="table-responsive"><table class="table table-hover mb-0"><thead><tr><th>Event</th><th>User</th><th>Source</th><th>Time</th><th class="text-end">Value</th></tr></thead><tbody><tr><td>checkout.completed</td><td>maya@example.com</td><td>API</td><td>2 min ago</td><td class="text-end">$290</td></tr><tr><td>trial.started</td><td>dev@orbit.io</td><td>Web</td><td>14 min ago</td><td class="text-end">—</td></tr><tr><td>seat.added</td><td>ops@acme.com</td><td>Admin</td><td>1 hr ago</td><td class="text-end">$48</td></tr></tbody></table></div>
+          </div>
+          <nav class="mt-5 flex justify-end" aria-label="Table pagination"><ul class="pagination"><li class="page-item disabled"><span class="page-link">Previous</span></li><li class="page-item active"><span class="page-link">1</span></li><li class="page-item"><a class="page-link" href="#">2</a></li><li class="page-item"><a class="page-link" href="#">Next</a></li></ul></nav>
+        </section>
+
+        <section id="layout" class="mt-10 rounded-3xl border border-border bg-background p-6 shadow-sm">
+          <p class="text-sm font-semibold uppercase tracking-wide text-primary">Responsive layout</p>
+          <h2 class="mt-1 text-2xl font-semibold">App shell with tabs</h2>
+          <div class="mt-5 rounded-2xl border border-border bg-card p-4">
+            <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#overview-panel" type="button" role="tab">Overview</button></li><li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#settings-panel" type="button" role="tab">Settings</button></li></ul>
+            <div class="tab-content pt-5"><div id="overview-panel" class="tab-pane fade show active" role="tabpanel"><div class="grid gap-4 md:grid-cols-2"><div class="rounded-xl border border-border p-4"><h3 class="font-semibold">Content area</h3><p class="mt-2 text-sm text-muted-foreground">Use responsive grid utilities for master-detail, inbox, settings, and report layouts.</p></div><div class="rounded-xl border border-border p-4"><h3 class="font-semibold">Side panel</h3><p class="mt-2 text-sm text-muted-foreground">Bootstrap tabs provide state while Tailwind utilities own layout.</p></div></div></div><div id="settings-panel" class="tab-pane fade" role="tabpanel"><form class="grid gap-4 md:grid-cols-2"><div><label class="form-label">Workspace</label><input class="form-control" value="Windform Cloud"></div><div><label class="form-label">Region</label><select class="form-select"><option>US East</option><option>EU West</option></select></div></form></div></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="customerModal" class="modal fade" tabindex="-1" aria-labelledby="customerModalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header"><h2 id="customerModalTitle" class="modal-title">Add customer</h2><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+          <div class="modal-body"><form class="grid gap-4"><div><label class="form-label" for="customerName">Name</label><input id="customerName" class="form-control" placeholder="Acme Inc."></div><div><label class="form-label" for="customerPlan">Plan</label><select id="customerPlan" class="form-select"><option>Starter</option><option>Pro</option><option>Scale</option></select></div></form></div>
+          <div class="modal-footer"><button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button><button class="btn btn-primary">Create customer</button></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

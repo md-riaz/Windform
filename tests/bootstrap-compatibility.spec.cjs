@@ -4,6 +4,7 @@ const { test, expect } = require('@playwright/test');
 const cssPath = path.resolve(__dirname, '../docs/assets/windform.css');
 const bootstrapPath = path.resolve(__dirname, '../node_modules/bootstrap/dist/js/bootstrap.bundle.js');
 const cdnStarterPath = path.resolve(__dirname, '../docs/cdn-starter.html');
+const templatesPath = path.resolve(__dirname, '../docs/templates.html');
 
 async function loadRuntime(page, markup) {
   await page.setContent(`<main>${markup}</main>`);
@@ -135,4 +136,19 @@ test('CDN starter documents token mapping and Bootstrap interactions', async ({ 
   await expect(page.locator('link[rel="stylesheet"]')).toHaveAttribute('href', 'assets/windform.css');
   await page.locator('[data-bs-target="#starterModal"]').click();
   await expect(page.locator('#starterModal')).toHaveClass(/show/);
+});
+
+test('Application templates expose responsive CRUD and layout interactions', async ({ page }) => {
+  await page.route('https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js', (route) => route.fulfill({ path: bootstrapPath }));
+  await page.goto(`file://${templatesPath.replace(/\\/g, '/')}`);
+
+  await expect(page.locator('#admin')).toContainText('Operations overview');
+  await expect(page.locator('#crud')).toContainText('Customers');
+  await expect(page.locator('#tables table tbody tr')).toHaveCount(3);
+  await page.locator('[data-bs-target="#customerModal"]').click();
+  await expect(page.locator('#customerModal')).toHaveClass(/show/);
+  await page.locator('#customerModal .btn-close').click();
+  await expect(page.locator('#customerModal')).not.toHaveClass(/show/);
+  await page.locator('[data-bs-target="#settings-panel"]').click();
+  await expect(page.locator('#settings-panel')).toHaveClass(/active/);
 });
