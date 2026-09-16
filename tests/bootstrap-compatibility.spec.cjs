@@ -148,6 +148,12 @@ test('Application templates expose responsive CRUD and layout interactions', asy
   await expect(page.locator('#tables table tbody tr')).toHaveCount(3);
   await expect(page.locator('#tables table tbody tr').nth(1).locator('td').last()).toHaveText('—');
   await expect(page.locator('#segment')).toHaveCSS('appearance', 'none');
+  await page.setViewportSize({ width: 390, height: 800 });
+  await page.locator('[data-bs-target="#templateNav"]').click();
+  await expect(page.locator('#templateNav')).toHaveClass(/show/);
+  await expect(page.locator('#templateNav')).toContainText('AdminLTE-style shell');
+  await page.reload();
+  await page.setViewportSize({ width: 1280, height: 900 });
   await page.locator('[data-bs-target="#customerModal"]').click();
   await expect(page.locator('#customerModal')).toHaveClass(/show/);
   await page.locator('#customerModal .btn-close').click();
