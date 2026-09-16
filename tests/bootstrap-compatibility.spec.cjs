@@ -178,6 +178,8 @@ test('AdminLTE-inspired template exposes dashboard app families', async ({ page 
   await expect(page.locator('#invoiceStatusModal')).toHaveClass(/show/);
   const profileNameColor = await page.locator('#adminlte-shell aside').getByText('Maya Rahman').evaluate((node) => getComputedStyle(node).color);
   expect(profileNameColor).toBe('rgb(255, 255, 255)');
+  const templateNoteColor = await page.locator('#adminlte-shell aside').getByText('Use this as an application shell starter').evaluate((node) => getComputedStyle(node).color);
+  expect(templateNoteColor).not.toBe('rgb(2, 6, 23)');
   await page.locator('#invoiceStatusModal .btn-close').click();
   await expect(page.locator('#invoiceStatusModal')).not.toHaveClass(/show/);
 });
