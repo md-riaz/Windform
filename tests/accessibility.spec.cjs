@@ -38,7 +38,7 @@ test('core Bootstrap fixture has no serious axe violations @a11y', async ({ page
   expect(results.violations.filter((violation) => ['critical', 'serious'].includes(violation.impact))).toEqual([]);
 });
 
-for (const adminPage of ['index.html', 'mailbox.html', 'errors.html', 'modals.html']) {
+for (const adminPage of ['index.html', 'mailbox.html', 'errors.html', 'modals.html', 'cdn-starter.html']) {
   test(`admin panel ${adminPage} has no serious axe violations @a11y`, async ({ page }) => {
     await page.route('https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js', (route) => route.fulfill({ path: bootstrapPath }));
     await page.goto(`file://${path.join(adminPanelDir, adminPage).replace(/\\/g, '/')}`);

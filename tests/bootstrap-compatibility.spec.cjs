@@ -227,6 +227,15 @@ test('Admin panel example clones AdminLTE page families with Bootstrap runtime',
     expect(html).toContain('bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js');
     expect(html).not.toMatch(/jquery|adminlte\.min|adminlte\.css|adminlte\.js/i);
   }
+  const pluginHtml = fs.readFileSync(path.join(adminPanelDir, 'plugins.html'), 'utf8');
+  expect(pluginHtml).toContain('select2@4.1.0-rc.0');
+  expect(pluginHtml).toContain('jquery@3.7.1');
+  expect(pluginHtml).toContain('Plugin bridge: Select2');
+  expect(pluginHtml).not.toMatch(/adminlte\.min|adminlte\.css|adminlte\.js/i);
+  const cdnHtml = fs.readFileSync(path.join(adminPanelDir, 'cdn-starter.html'), 'utf8');
+  expect(cdnHtml).toContain('@tailwindcss/browser@4');
+  expect(cdnHtml).toContain('@theme');
+  expect(cdnHtml).toContain('No build required');
 
   await page.route('https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js', (route) => route.fulfill({ path: bootstrapPath }));
   await page.goto(`file://${adminPanelExamplePath.replace(/\\/g, '/')}`);
@@ -269,6 +278,11 @@ test('Admin panel example clones AdminLTE page families with Bootstrap runtime',
   await page.goto(`file://${path.join(adminPanelDir, 'buttons.html').replace(/\\/g, '/')}`);
   await page.getByRole('button', { name: 'Bulk action' }).click();
   await expect(page.getByRole('button', { name: 'Archive' })).toBeVisible();
+
+  await page.goto(`file://${path.join(adminPanelDir, 'cdn-starter.html').replace(/\\/g, '/')}`);
+  await expect(page.locator('h1')).toContainText('Admin panel from CDN assets');
+  await page.getByRole('button', { name: 'Open actions' }).click();
+  await expect(page.getByRole('button', { name: 'Export' })).toBeVisible();
 });
 
 test('Auth templates include the complete account access flow', async ({ page }) => {
