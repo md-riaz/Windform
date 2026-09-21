@@ -8,6 +8,7 @@ const cdnStarterPath = path.resolve(__dirname, '../docs/cdn-starter.html');
 const templatesPath = path.resolve(__dirname, '../docs/templates.html');
 const authPath = path.resolve(__dirname, '../docs/auth.html');
 const componentsPath = path.resolve(__dirname, '../docs/components.html');
+const adminPanelExamplePath = path.resolve(__dirname, '../examples/admin-panel/index.html');
 
 async function loadRuntime(page, markup) {
   await page.setContent(`<main>${markup}</main>`);
@@ -215,6 +216,42 @@ test('Component docs include remaining Bootstrap copy examples', async ({ page }
   await expect(page.locator('.btn-close')).toHaveAttribute('aria-label', 'Close panel');
   await expect(page.locator('.placeholder').first()).toHaveCSS('display', 'inline-block');
   await expect(page.locator('.form-switch .form-check-input')).toHaveCSS('appearance', 'none');
+});
+
+test('Admin panel example clones AdminLTE page families with Bootstrap runtime', async ({ page }) => {
+  const html = fs.readFileSync(adminPanelExamplePath, 'utf8');
+  for (const fragment of [
+    'AdminLTE 2-inspired',
+    'Dashboard',
+    'Widgets',
+    'Mailbox',
+    'Forms',
+    'Data tables',
+    'Profile',
+    'Invoice #WF-2048',
+    'Login',
+    '404',
+    'Lockscreen',
+    'data-bs-toggle="modal"',
+    'data-bs-toggle="dropdown"',
+    'data-bs-toggle="tab"',
+    'data-bs-toggle="offcanvas"'
+  ]) {
+    expect(html).toContain(fragment);
+  }
+
+  await page.route('https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js', (route) => route.fulfill({ path: bootstrapPath }));
+  await page.goto(`file://${adminPanelExamplePath.replace(/\\/g, '/')}`);
+  await expect(page.locator('h1')).toContainText('AdminLTE dashboard, Windform design');
+  await page.locator('[data-bs-target="#composeModal"]').first().click();
+  await expect(page.locator('#composeModal')).toHaveClass(/show/);
+  await page.locator('#composeModal .btn-close').click();
+  await expect(page.locator('#composeModal')).not.toHaveClass(/show/);
+  await page.locator('[data-bs-target="#donutChart"]').click();
+  await expect(page.locator('#donutChart')).toHaveClass(/active/);
+  await page.setViewportSize({ width: 390, height: 800 });
+  await page.locator('[data-bs-target="#mobileNav"]').click();
+  await expect(page.locator('#mobileNav')).toHaveClass(/show/);
 });
 
 test('Auth templates include the complete account access flow', async ({ page }) => {
