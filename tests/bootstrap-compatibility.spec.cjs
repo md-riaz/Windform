@@ -228,9 +228,13 @@ test('Admin panel example clones AdminLTE page families with Bootstrap runtime',
     'Forms',
     'Data tables',
     'Profile',
+    'Read mail',
     'Invoice #WF-2048',
+    'Register',
+    'Password recovery',
     'Login',
     '404',
+    '500',
     'Lockscreen',
     'data-bs-toggle="modal"',
     'data-bs-toggle="dropdown"',
@@ -243,15 +247,22 @@ test('Admin panel example clones AdminLTE page families with Bootstrap runtime',
   await page.route('https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js', (route) => route.fulfill({ path: bootstrapPath }));
   await page.goto(`file://${adminPanelExamplePath.replace(/\\/g, '/')}`);
   await expect(page.locator('h1')).toContainText('AdminLTE dashboard, Windform design');
-  await page.locator('[data-bs-target="#composeModal"]').first().click();
+  await expect.poll(() => page.evaluate(() => typeof window.bootstrap)).toBe('object');
+  await expect(page.locator('#areaChartTab')).toHaveAttribute('aria-selected', 'true');
+  await expect(page.locator('#donutChart')).toHaveCSS('display', 'none');
+  await page.locator('#donutChartTab').click();
+  await expect(page.locator('#areaChartTab')).toHaveAttribute('aria-selected', 'false');
+  await expect(page.locator('#donutChartTab')).toHaveAttribute('aria-selected', 'true');
+  await expect(page.locator('#donutChart')).toBeVisible();
+  const composeTrigger = page.locator('[data-bs-target="#composeModal"]').first();
+  await composeTrigger.click();
   await expect(page.locator('#composeModal')).toHaveClass(/show/);
   await page.locator('#composeModal .btn-close').click();
   await expect(page.locator('#composeModal')).not.toHaveClass(/show/);
-  await page.locator('[data-bs-target="#donutChart"]').click();
-  await expect(page.locator('#donutChart')).toHaveClass(/active/);
   await page.setViewportSize({ width: 390, height: 800 });
   await page.locator('[data-bs-target="#mobileNav"]').click();
   await expect(page.locator('#mobileNav')).toHaveClass(/show/);
+  await expect(page.locator('#mobileNav')).toContainText('Auth and errors');
 });
 
 test('Auth templates include the complete account access flow', async ({ page }) => {
