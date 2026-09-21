@@ -247,7 +247,10 @@ test('Admin panel example clones AdminLTE page families with Bootstrap runtime',
   await page.route('https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js', (route) => route.fulfill({ path: bootstrapPath }));
   await page.goto(`file://${adminPanelExamplePath.replace(/\\/g, '/')}`);
   await expect(page.locator('h1')).toContainText('AdminLTE dashboard, Windform design');
+  await expect(page.getByLabel('Remember me')).toBeVisible();
   await expect.poll(() => page.evaluate(() => typeof window.bootstrap)).toBe('object');
+  await page.getByRole('button', { name: /Messages/ }).click();
+  await expect(page.getByRole('button', { name: 'Support replied' })).toBeVisible();
   await expect(page.locator('#areaChartTab')).toHaveAttribute('aria-selected', 'true');
   await expect(page.locator('#donutChart')).toHaveCSS('display', 'none');
   await page.locator('#donutChartTab').click();
