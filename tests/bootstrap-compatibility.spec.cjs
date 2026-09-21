@@ -9,6 +9,7 @@ const templatesPath = path.resolve(__dirname, '../docs/templates.html');
 const authPath = path.resolve(__dirname, '../docs/auth.html');
 const componentsPath = path.resolve(__dirname, '../docs/components.html');
 const adminPanelExamplePath = path.resolve(__dirname, '../examples/admin-panel/index.html');
+const adminPanelDir = path.resolve(__dirname, '../examples/admin-panel');
 
 async function loadRuntime(page, markup) {
   await page.setContent(`<main>${markup}</main>`);
@@ -219,35 +220,17 @@ test('Component docs include remaining Bootstrap copy examples', async ({ page }
 });
 
 test('Admin panel example clones AdminLTE page families with Bootstrap runtime', async ({ page }) => {
-  const html = fs.readFileSync(adminPanelExamplePath, 'utf8');
-  for (const fragment of [
-    'AdminLTE 2-inspired',
-    'Dashboard',
-    'Widgets',
-    'Mailbox',
-    'Forms',
-    'Data tables',
-    'Profile',
-    'Read mail',
-    'Invoice #WF-2048',
-    'Register',
-    'Password recovery',
-    'Login',
-    '404',
-    '500',
-    'Lockscreen',
-    'data-bs-toggle="modal"',
-    'data-bs-toggle="dropdown"',
-    'data-bs-toggle="tab"',
-    'data-bs-toggle="offcanvas"'
-  ]) {
-    expect(html).toContain(fragment);
+  const pages = ['index.html', 'mailbox.html', 'forms.html', 'tables.html', 'profile.html', 'invoice.html', 'calendar.html', 'login.html', 'errors.html'];
+  for (const name of pages) {
+    const html = fs.readFileSync(path.join(adminPanelDir, name), 'utf8');
+    expect(html).toContain('../../docs/assets/windform.css');
+    expect(html).toContain('bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js');
+    expect(html).not.toMatch(/jquery|adminlte\.min|adminlte\.css|adminlte\.js/i);
   }
 
   await page.route('https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js', (route) => route.fulfill({ path: bootstrapPath }));
   await page.goto(`file://${adminPanelExamplePath.replace(/\\/g, '/')}`);
   await expect(page.locator('h1')).toContainText('AdminLTE dashboard, Windform design');
-  await expect(page.getByLabel('Remember me')).toBeVisible();
   await expect.poll(() => page.evaluate(() => typeof window.bootstrap)).toBe('object');
   await page.getByRole('button', { name: /Messages/ }).click();
   await expect(page.getByRole('button', { name: 'Support replied' })).toBeVisible();
@@ -257,15 +240,27 @@ test('Admin panel example clones AdminLTE page families with Bootstrap runtime',
   await expect(page.locator('#areaChartTab')).toHaveAttribute('aria-selected', 'false');
   await expect(page.locator('#donutChartTab')).toHaveAttribute('aria-selected', 'true');
   await expect(page.locator('#donutChart')).toBeVisible();
-  const composeTrigger = page.locator('[data-bs-target="#composeModal"]').first();
-  await composeTrigger.click();
-  await expect(page.locator('#composeModal')).toHaveClass(/show/);
-  await page.locator('#composeModal .btn-close').click();
-  await expect(page.locator('#composeModal')).not.toHaveClass(/show/);
   await page.setViewportSize({ width: 390, height: 800 });
   await page.locator('[data-bs-target="#mobileNav"]').click();
   await expect(page.locator('#mobileNav')).toHaveClass(/show/);
-  await expect(page.locator('#mobileNav')).toContainText('Auth and errors');
+  await expect(page.locator('#mobileNav')).toContainText('Errors');
+
+  await page.goto(`file://${path.join(adminPanelDir, 'mailbox.html').replace(/\\/g, '/')}`);
+  await page.locator('[data-bs-target="#composeModal"]').click();
+  await expect(page.locator('#composeModal')).toHaveClass(/show/);
+  await page.locator('#composeModal .btn-close').click();
+  await expect(page.locator('#composeModal')).not.toHaveClass(/show/);
+
+  await page.goto(`file://${path.join(adminPanelDir, 'profile.html').replace(/\\/g, '/')}`);
+  await page.locator('#timelinePaneTab').click();
+  await expect(page.locator('#timelinePane')).toBeVisible();
+
+  await page.goto(`file://${path.join(adminPanelDir, 'invoice.html').replace(/\\/g, '/')}`);
+  await page.getByRole('button', { name: 'Download' }).click();
+  await expect(page.getByRole('button', { name: 'PDF' })).toBeVisible();
+
+  await page.goto(`file://${path.join(adminPanelDir, 'login.html').replace(/\\/g, '/')}`);
+  await expect(page.getByLabel('Remember me')).toBeVisible();
 });
 
 test('Auth templates include the complete account access flow', async ({ page }) => {

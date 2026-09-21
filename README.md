@@ -211,7 +211,7 @@ The single CSS layer implements the following Bootstrap-compatible selectors:
 
 Bootstrap layout and helper utilities are out of scope; use Tailwind utilities directly for layout and local composition. `text-muted` is retained as a text-color compatibility selector and maps to `text-muted-foreground`.
 
-Refer to `docs/components.html` for real-world markup examples that exercise each component and match the Bootstrap data-API triggers. A larger AdminLTE 2-inspired migration example lives in `examples/admin-panel/index.html`; it keeps Bootstrap JS interactions while using Windform/Tailwind tokens instead of AdminLTE assets. The production stylesheet scans `./examples/**/*.html`, so run `npm run build` before opening a source checkout directly.
+Refer to `docs/components.html` for real-world markup examples that exercise each component and match the Bootstrap data-API triggers. A larger AdminLTE 2-inspired migration example family starts at `examples/admin-panel/index.html`, with split pages for mailbox, forms, tables, profile, invoice, calendar, login, and errors. It keeps Bootstrap JS interactions while using Windform/Tailwind tokens instead of AdminLTE assets. The production stylesheet scans `./examples/**/*.html`, so run `npm run build` before opening a source checkout directly.
 
 ## Accessibility Notes
 
