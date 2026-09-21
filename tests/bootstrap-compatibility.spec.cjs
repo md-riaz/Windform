@@ -1,3 +1,4 @@
+const fs = require('node:fs');
 const path = require('node:path');
 const { test, expect } = require('@playwright/test');
 
@@ -6,6 +7,7 @@ const bootstrapPath = path.resolve(__dirname, '../node_modules/bootstrap/dist/js
 const cdnStarterPath = path.resolve(__dirname, '../docs/cdn-starter.html');
 const templatesPath = path.resolve(__dirname, '../docs/templates.html');
 const authPath = path.resolve(__dirname, '../docs/auth.html');
+const componentsPath = path.resolve(__dirname, '../docs/components.html');
 
 async function loadRuntime(page, markup) {
   await page.setContent(`<main>${markup}</main>`);
@@ -182,6 +184,37 @@ test('AdminLTE-inspired template exposes dashboard app families', async ({ page 
   expect(templateNoteColor).not.toBe('rgb(2, 6, 23)');
   await page.locator('#invoiceStatusModal .btn-close').click();
   await expect(page.locator('#invoiceStatusModal')).not.toHaveClass(/show/);
+});
+
+test('Component docs include remaining Bootstrap copy examples', async ({ page }) => {
+  const html = fs.readFileSync(componentsPath, 'utf8');
+  for (const fragment of [
+    'Form states and controls',
+    'class="form-floating"',
+    'class="form-control is-valid"',
+    'class="form-control is-invalid"',
+    'class="form-check form-switch"',
+    'type="file"',
+    'type="color"',
+    'class="form-range"',
+    'Close buttons',
+    'class="btn-close"',
+    'Placeholders',
+    'placeholder-glow',
+    'placeholder-wave'
+  ]) {
+    expect(html).toContain(fragment);
+  }
+
+  await loadRuntime(page, `
+    <button type="button" class="btn-close" aria-label="Close panel"></button>
+    <div class="placeholder-glow"><span class="placeholder col-6 rounded"></span></div>
+    <div class="placeholder-wave"><span class="placeholder col-4 rounded"></span></div>
+    <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" checked></div>
+  `);
+  await expect(page.locator('.btn-close')).toHaveAttribute('aria-label', 'Close panel');
+  await expect(page.locator('.placeholder').first()).toHaveCSS('display', 'inline-block');
+  await expect(page.locator('.form-switch .form-check-input')).toHaveCSS('appearance', 'none');
 });
 
 test('Auth templates include the complete account access flow', async ({ page }) => {

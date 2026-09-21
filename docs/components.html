@@ -2586,6 +2586,63 @@
                 </form>
               </template>
             </article>
+
+            <article data-component-example class="rounded-3xl border border-border bg-card">
+              <div class="border-b border-border/80 px-6 py-5">
+                <h3 class="text-lg font-semibold text-foreground">Form states and controls</h3>
+                <p class="mt-1 text-sm text-muted-foreground">Floating labels, validation, switches, file, color, range, disabled, and readonly controls.</p>
+              </div>
+              <div class="flex items-center justify-between gap-3 border-b border-border/60 bg-muted/40 px-6 py-3 text-xs font-semibold">
+                <div class="flex items-center gap-2">
+                  <button type="button" data-view="preview" class="inline-flex items-center gap-1 rounded-full bg-primary/10 px-3 py-1.5 text-primary transition hover:bg-primary/20">Preview</button>
+                  <button type="button" data-view="code" class="inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-muted-foreground transition hover:bg-muted/60">Code</button>
+                </div>
+                <button type="button" data-copy class="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-muted-foreground transition hover:border-primary/60 hover:text-primary">Copy markup</button>
+              </div>
+              <div data-slot="preview" class="px-6 py-6"></div>
+              <pre data-slot="code" class="hidden overflow-x-auto px-6 py-6 text-xs text-muted-foreground"><code class="language-html"></code></pre>
+              <template data-example>
+                <form class="space-y-6 rounded-2xl border border-border bg-background p-6" novalidate>
+                  <div class="form-floating">
+                    <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com" value="maya@example.com" />
+                    <label for="floatingEmail">Email address</label>
+                  </div>
+                  <div>
+                    <label for="validInput" class="form-label">Validated project</label>
+                    <input id="validInput" class="form-control is-valid" value="Windform launch" aria-describedby="validInputFeedback" />
+                    <div id="validInputFeedback" class="valid-feedback">Looks good.</div>
+                  </div>
+                  <div>
+                    <label for="invalidInput" class="form-label">Workspace slug</label>
+                    <input id="invalidInput" class="form-control is-invalid" value="windform demo" aria-invalid="true" aria-describedby="invalidInputFeedback" />
+                    <div id="invalidInputFeedback" class="invalid-feedback">Use lowercase letters, numbers, or hyphens only.</div>
+                  </div>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="componentSwitch" checked />
+                    <label class="form-check-label" for="componentSwitch">Enable launch notifications</label>
+                  </div>
+                  <div class="grid gap-4 md:grid-cols-2">
+                    <div>
+                      <label for="fileInput" class="form-label">Upload CSV</label>
+                      <input class="form-control" type="file" id="fileInput" />
+                    </div>
+                    <div>
+                      <label for="colorInput" class="form-label">Accent color</label>
+                      <input class="form-control form-control-color" type="color" id="colorInput" value="#2563eb" />
+                    </div>
+                  </div>
+                  <div>
+                    <label for="rangeInput" class="form-label">Confidence</label>
+                    <input type="range" class="form-range" min="0" max="100" id="rangeInput" value="72" />
+                  </div>
+                  <div class="grid gap-4 md:grid-cols-2">
+                    <input class="form-control" value="Disabled control" disabled aria-label="Disabled example" />
+                    <input class="form-control" value="Readonly control" readonly aria-label="Readonly example" />
+                  </div>
+                </form>
+              </template>
+            </article>
+
           </div>
         </section>
 
@@ -2632,6 +2689,55 @@
                   <div class="alert alert-primary alert-dismissible fade show" role="alert">
                     <strong>Dismissible:</strong> Click the × to close this alert.
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                </div>
+              </template>
+            </article>
+
+
+
+            <article data-component-example class="rounded-3xl border border-border bg-card">
+              <div class="border-b border-border/80 px-6 py-5">
+                <h3 class="text-lg font-semibold text-foreground">Close buttons</h3>
+                <p class="mt-1 text-sm text-muted-foreground">Standalone dismiss controls with accessible labels.</p>
+              </div>
+              <div class="flex items-center justify-between gap-3 border-b border-border/60 bg-muted/40 px-6 py-3 text-xs font-semibold">
+                <div class="flex items-center gap-2"><button type="button" data-view="preview" class="inline-flex items-center gap-1 rounded-full bg-primary/10 px-3 py-1.5 text-primary transition hover:bg-primary/20">Preview</button><button type="button" data-view="code" class="inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-muted-foreground transition hover:bg-muted/60">Code</button></div>
+                <button type="button" data-copy class="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-muted-foreground transition hover:border-primary/60 hover:text-primary">Copy markup</button>
+              </div>
+              <div data-slot="preview" class="px-6 py-6"></div>
+              <pre data-slot="code" class="hidden overflow-x-auto px-6 py-6 text-xs text-muted-foreground"><code class="language-html"></code></pre>
+              <template data-example>
+                <div class="flex items-center gap-4 rounded-2xl border border-border bg-background p-6">
+                  <button type="button" class="btn-close" aria-label="Close panel"></button>
+                  <button type="button" class="btn-close" disabled aria-label="Close disabled panel"></button>
+                </div>
+              </template>
+            </article>
+
+            <article data-component-example class="rounded-3xl border border-border bg-card">
+              <div class="border-b border-border/80 px-6 py-5">
+                <h3 class="text-lg font-semibold text-foreground">Placeholders</h3>
+                <p class="mt-1 text-sm text-muted-foreground">Bootstrap placeholder loading states with glow and wave variants.</p>
+              </div>
+              <div class="flex items-center justify-between gap-3 border-b border-border/60 bg-muted/40 px-6 py-3 text-xs font-semibold">
+                <div class="flex items-center gap-2"><button type="button" data-view="preview" class="inline-flex items-center gap-1 rounded-full bg-primary/10 px-3 py-1.5 text-primary transition hover:bg-primary/20">Preview</button><button type="button" data-view="code" class="inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-muted-foreground transition hover:bg-muted/60">Code</button></div>
+                <button type="button" data-copy class="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-muted-foreground transition hover:border-primary/60 hover:text-primary">Copy markup</button>
+              </div>
+              <div data-slot="preview" class="px-6 py-6"></div>
+              <pre data-slot="code" class="hidden overflow-x-auto px-6 py-6 text-xs text-muted-foreground"><code class="language-html"></code></pre>
+              <template data-example>
+                <div class="grid gap-4 rounded-2xl border border-border bg-background p-6 md:grid-cols-2">
+                  <div class="placeholder-glow rounded-2xl border border-border p-4">
+                    <span class="placeholder col-7 rounded"></span>
+                    <span class="placeholder col-4 rounded"></span>
+                    <span class="placeholder col-4 placeholder-sm rounded"></span>
+                    <span class="placeholder col-6 placeholder-lg rounded"></span>
+                  </div>
+                  <div class="placeholder-wave rounded-2xl border border-border p-4">
+                    <span class="placeholder col-6 rounded"></span>
+                    <span class="placeholder col-8 rounded"></span>
+                    <span class="placeholder col-5 placeholder-xs rounded"></span>
                   </div>
                 </div>
               </template>

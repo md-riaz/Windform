@@ -779,7 +779,7 @@
   }
 
   .form-switch .form-check-input {
-    @apply h-6 w-11 rounded-full border border-input bg-muted transition;
+    @apply h-6 w-11 appearance-none rounded-full border border-input bg-muted transition;
     background-image: none;
   }
 
