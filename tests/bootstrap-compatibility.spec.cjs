@@ -220,7 +220,7 @@ test('Component docs include remaining Bootstrap copy examples', async ({ page }
 });
 
 test('Admin panel example clones AdminLTE page families with Bootstrap runtime', async ({ page }) => {
-  const pages = ['index.html', 'mailbox.html', 'forms.html', 'tables.html', 'profile.html', 'invoice.html', 'calendar.html', 'login.html', 'errors.html'];
+  const pages = ['index.html', 'widgets.html', 'mailbox.html', 'forms.html', 'advanced-forms.html', 'tables.html', 'profile.html', 'invoice.html', 'calendar.html', 'buttons.html', 'modals.html', 'timeline.html', 'login.html', 'errors.html'];
   for (const name of pages) {
     const html = fs.readFileSync(path.join(adminPanelDir, name), 'utf8');
     expect(html).toContain('../../docs/assets/windform.css');
@@ -261,6 +261,14 @@ test('Admin panel example clones AdminLTE page families with Bootstrap runtime',
 
   await page.goto(`file://${path.join(adminPanelDir, 'login.html').replace(/\\/g, '/')}`);
   await expect(page.getByLabel('Remember me')).toBeVisible();
+
+  await page.goto(`file://${path.join(adminPanelDir, 'modals.html').replace(/\\/g, '/')}`);
+  await page.getByRole('button', { name: 'Open modal' }).click();
+  await expect(page.locator('#confirmModal')).toHaveClass(/show/);
+
+  await page.goto(`file://${path.join(adminPanelDir, 'buttons.html').replace(/\\/g, '/')}`);
+  await page.getByRole('button', { name: 'Bulk action' }).click();
+  await expect(page.getByRole('button', { name: 'Archive' })).toBeVisible();
 });
 
 test('Auth templates include the complete account access flow', async ({ page }) => {
