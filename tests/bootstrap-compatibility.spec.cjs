@@ -228,10 +228,10 @@ test('Admin panel example clones AdminLTE page families with Bootstrap runtime',
     expect(html).not.toMatch(/jquery|adminlte\.min|adminlte\.css|adminlte\.js/i);
   }
   const pluginHtml = fs.readFileSync(path.join(adminPanelDir, 'plugins.html'), 'utf8');
-  expect(pluginHtml).toContain('select2@4.1.0-rc.0');
-  expect(pluginHtml).toContain('jquery@3.7.1');
-  expect(pluginHtml).toContain('Plugin bridge: Select2');
-  expect(pluginHtml).not.toMatch(/adminlte\.min|adminlte\.css|adminlte\.js/i);
+  expect(pluginHtml).toContain('slim-select@2.12.1');
+  expect(pluginHtml).toContain('tom-select@2.4.3');
+  expect(pluginHtml).toContain('Plugin bridge: Slim Select and Tom Select');
+  expect(pluginHtml).not.toMatch(/jquery@|jquery\.min|select2@|select2\.min|adminlte\.min|adminlte\.css|adminlte\.js/i);
   const cdnHtml = fs.readFileSync(path.join(adminPanelDir, 'cdn-starter.html'), 'utf8');
   expect(cdnHtml).toContain('@tailwindcss/browser@4');
   expect(cdnHtml).toContain('@theme');
