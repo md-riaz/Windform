@@ -2,6 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const outDir = path.resolve(__dirname, '../examples/admin-panel');
+const docsOutDir = path.resolve(__dirname, '../docs/examples/admin-panel');
 const cssHref = '../../docs/assets/windform.css';
 const bootstrapSrc = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js';
 
@@ -160,8 +161,13 @@ function cdnShell() {
 
 Object.assign(pages, remaining);
 fs.mkdirSync(outDir, { recursive: true });
+fs.mkdirSync(docsOutDir, { recursive: true });
 for (const [file, page] of Object.entries(pages)) {
-  fs.writeFileSync(path.join(outDir, file), shell(page), 'utf8');
+  const html = shell(page);
+  fs.writeFileSync(path.join(outDir, file), html, 'utf8');
+  fs.writeFileSync(path.join(docsOutDir, file), html.replaceAll('../../docs/assets/windform.css', '../../assets/windform.css'), 'utf8');
 }
-fs.writeFileSync(path.join(outDir, 'cdn-starter.html'), cdnShell(), 'utf8');
-console.log(`Generated ${Object.keys(pages).length + 1} admin panel example pages.`);
+const cdnHtml = cdnShell();
+fs.writeFileSync(path.join(outDir, 'cdn-starter.html'), cdnHtml, 'utf8');
+fs.writeFileSync(path.join(docsOutDir, 'cdn-starter.html'), cdnHtml, 'utf8');
+console.log(`Generated ${Object.keys(pages).length + 1} admin panel example pages in examples and docs.`);
