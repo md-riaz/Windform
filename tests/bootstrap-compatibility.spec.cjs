@@ -253,7 +253,10 @@ test('Admin panel example clones AdminLTE page families with Bootstrap runtime',
   await page.setViewportSize({ width: 390, height: 800 });
   await page.locator('[data-bs-target="#mobileNav"]').click();
   await expect(page.locator('#mobileNav')).toHaveClass(/show/);
+  await expect(page.locator('#mobileNav')).toContainText('Windform Admin');
+  await expect(page.locator('#mobileNav')).toContainText('Maya Rahman');
   await expect(page.locator('#mobileNav')).toContainText('Errors');
+  await expect(page.locator('#mobileNav')).toHaveCSS('background-color', 'rgb(2, 8, 23)');
 
   await page.goto(`file://${path.join(adminPanelDir, 'mailbox.html').replace(/\\/g, '/')}`);
   await page.locator('[data-bs-target="#composeModal"]').click();

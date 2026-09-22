@@ -40,7 +40,7 @@ function navClass(active, label) {
 
 function shell({ title, active, body, extra = '' }) {
   const desktopNav = nav.map(([label, href]) => `<a class="${navClass(active, label)}" href="${href}"${attrs(active, label)}>${label}</a>`).join('\n');
-  const mobileNav = nav.map(([label, href]) => `<a class="rounded-md px-3 py-2 text-muted-foreground hover:bg-accent" href="${href}" data-bs-dismiss="offcanvas">${label}</a>`).join('\n');
+  const mobileNav = nav.map(([label, href]) => `<a class="${navClass(active, label)}" href="${href}"${attrs(active, label)} data-bs-dismiss="offcanvas">${label}</a>`).join('\n');
 
   return `<!doctype html>
 <html lang="en" class="scroll-smooth">
@@ -64,7 +64,7 @@ function shell({ title, active, body, extra = '' }) {
         <main class="mx-auto w-full max-w-screen-2xl space-y-6 p-4 sm:p-6 lg:p-8">${body}</main>
       </div>
     </div>
-    <div id="mobileNav" class="offcanvas offcanvas-start" tabindex="-1" aria-labelledby="mobileNavTitle"><div class="offcanvas-header"><h2 id="mobileNavTitle" class="offcanvas-title">Admin navigation</h2><button class="btn-close" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button></div><div class="offcanvas-body"><nav class="grid gap-2">${mobileNav}</nav></div></div>
+    <div id="mobileNav" class="offcanvas offcanvas-start border-background/10 bg-foreground text-background" tabindex="-1" aria-labelledby="mobileNavTitle"><div class="flex items-center justify-between border-b border-background/10 bg-background/5 px-4 py-4"><a class="flex items-center gap-3 rounded-xl px-2 py-2 text-background transition-colors hover:bg-background/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-foreground" href="index.html" aria-label="Windform admin home"><span class="inline-flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary font-bold text-primary-foreground shadow-sm">WF</span><span><span id="mobileNavTitle" class="block font-semibold text-background">Windform Admin</span><span class="block text-sm text-background/70">AdminLTE 2-inspired</span></span></a><button class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-background/70 hover:bg-background/10 hover:text-background" type="button" data-bs-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">×</span></button></div><div class="p-4"><div class="rounded-xl border border-background/10 bg-background/5 p-3"><div class="flex items-center gap-3"><span class="avatar h-10 w-10 rounded-xl bg-primary text-primary-foreground">MR</span><div><p class="text-sm font-semibold text-background">Maya Rahman</p><p class="text-xs font-medium text-background/70">online - admin</p></div></div></div><nav class="mt-6 grid gap-1 text-sm" aria-label="Admin sections">${mobileNav}</nav></div></div>
     ${extra}
   </body>
 </html>
