@@ -38,6 +38,7 @@ test('Bootstrap offcanvas and toast render lifecycle states', async ({ page }) =
   await page.evaluate(() => window.bootstrap.Offcanvas.getOrCreateInstance('#drawer').show());
   await expect(page.locator('#drawer')).toHaveClass(/show/);
   await expect(page.locator('#drawer')).toHaveCSS('visibility', 'visible');
+  await expect(page.locator('#drawer')).toHaveCSS('translate', 'none');
   await expect(page.locator('.offcanvas-backdrop')).toHaveClass(/show/);
   await expect(page.locator('.offcanvas-backdrop')).toHaveCSS('position', 'fixed');
   await expect(page.locator('.offcanvas-backdrop')).toHaveCSS('opacity', '1');

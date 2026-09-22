@@ -1247,6 +1247,7 @@
   .offcanvas-top.show,
   .offcanvas-bottom.showing,
   .offcanvas-bottom.show {
+    translate: none !important;
     transform: none;
   }
 
