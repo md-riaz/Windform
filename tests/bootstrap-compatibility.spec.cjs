@@ -296,6 +296,12 @@ test('Admin panel example clones AdminLTE page families with Bootstrap runtime',
 
   await page.goto(`file://${path.join(adminPanelDir, 'ecommerce.html').replace(/\\/g, '/')}`);
   await expect(page.locator('h1')).toContainText('Orders and products');
+
+  await page.goto(`file://${path.join(adminPanelDir, 'widgets.html').replace(/\\/g, '/')}`);
+  await expect(page.locator('h1')).toContainText('Widgets');
+  for (const text of ['Icon stat boxes', 'Progress widgets', 'Small boxes', 'Box states', 'Direct chat variants', 'Social widgets']) {
+    await expect(page.getByText(text)).toBeVisible();
+  }
 });
 
 test('Auth templates include the complete account access flow', async ({ page }) => {
