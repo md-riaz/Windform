@@ -6,27 +6,18 @@ const docsOutDir = path.resolve(__dirname, '../docs/examples/admin-panel');
 const cssHref = '../../docs/assets/windform.css';
 const bootstrapSrc = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js';
 
-const nav = [
-  ['Dashboard', 'index.html'],
-  ['Widgets', 'widgets.html'],
-  ['Mailbox', 'mailbox.html'],
-  ['Forms', 'forms.html'],
-  ['Advanced forms', 'advanced-forms.html'],
-  ['Plugins', 'plugins.html'],
-  ['CDN starter', 'cdn-starter.html'],
-  ['Tables', 'tables.html'],
-  ['Users', 'users.html'],
-  ['Ecommerce', 'ecommerce.html'],
-  ['Reports', 'reports.html'],
-  ['Profile', 'profile.html'],
-  ['Invoice', 'invoice.html'],
-  ['Calendar', 'calendar.html'],
-  ['Buttons', 'buttons.html'],
-  ['Modals', 'modals.html'],
-  ['Timeline', 'timeline.html'],
-  ['Login', 'login.html'],
-  ['Errors', 'errors.html']
+const navGroups = [
+  { label: 'Dashboard', href: 'index.html' },
+  { label: 'Widgets', href: 'widgets.html' },
+  { label: 'Mailbox', href: 'mailbox.html' },
+  { label: 'Forms', items: [['Basic forms', 'forms.html'], ['Advanced forms', 'advanced-forms.html'], ['Plugin selects', 'plugins.html'], ['CDN starter', 'cdn-starter.html']] },
+  { label: 'Data', items: [['Tables', 'tables.html'], ['Users', 'users.html'], ['Ecommerce', 'ecommerce.html'], ['Reports', 'reports.html']] },
+  { label: 'Examples', items: [['Profile', 'profile.html'], ['Invoice', 'invoice.html'], ['Calendar', 'calendar.html']] },
+  { label: 'UI Elements', items: [['Buttons', 'buttons.html'], ['Modals', 'modals.html'], ['Timeline', 'timeline.html']] },
+  { label: 'Auth and errors', items: [['Login', 'login.html'], ['Errors', 'errors.html']] }
 ];
+
+const nav = navGroups.flatMap((item) => item.items || [[item.label, item.href]]);
 
 function attrs(active, label) {
   return label === active ? ' aria-current="page"' : '';
@@ -39,8 +30,16 @@ function navClass(active, label) {
 }
 
 function shell({ title, active, body, extra = '' }) {
-  const desktopNav = nav.map(([label, href]) => `<a class="${navClass(active, label)}" href="${href}"${attrs(active, label)}>${label}</a>`).join('\n');
-  const mobileNav = nav.map(([label, href]) => `<a class="${navClass(active, label)}" href="${href}"${attrs(active, label)} data-bs-dismiss="offcanvas">${label}</a>`).join('\n');
+  const renderNav = (dismiss = false) => navGroups.map((item) => {
+    if (!item.items) {
+      return `<a class="${navClass(active, item.label)}" href="${item.href}"${attrs(active, item.label)}${dismiss ? ' data-bs-dismiss="offcanvas"' : ''}>${item.label}</a>`;
+    }
+    const open = item.items.some(([label]) => label === active);
+    const children = item.items.map(([label, href]) => `<a class="rounded-md px-3 py-2 text-sm font-medium ${label === active ? 'bg-background/15 text-background' : 'text-background/65 hover:bg-background/10 hover:text-background'}" href="${href}"${attrs(active, label)}${dismiss ? ' data-bs-dismiss="offcanvas"' : ''}>${label}</a>`).join('');
+    return `<details class="group rounded-lg"${open ? ' open' : ''}><summary class="flex cursor-pointer list-none items-center justify-between rounded-lg px-3 py-2.5 font-medium text-background/70 transition-colors hover:bg-background/10 hover:text-background"><span>${item.label}</span><span class="text-xs transition-transform group-open:rotate-90" aria-hidden="true">›</span></summary><div class="mt-1 grid gap-1 border-l border-background/10 ps-3">${children}</div></details>`;
+  }).join('\n');
+  const desktopNav = renderNav(false);
+  const mobileNav = renderNav(true);
 
   return `<!doctype html>
 <html lang="en" class="scroll-smooth">

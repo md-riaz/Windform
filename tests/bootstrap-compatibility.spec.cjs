@@ -256,6 +256,9 @@ test('Admin panel example clones AdminLTE page families with Bootstrap runtime',
   await expect(page.locator('#mobileNav')).toContainText('Windform Admin');
   await expect(page.locator('#mobileNav')).toContainText('Maya Rahman');
   await expect(page.locator('#mobileNav')).toContainText('Errors');
+  await expect(page.locator('#mobileNav details summary', { hasText: 'Forms' })).toBeVisible();
+  await expect(page.locator('#mobileNav details summary', { hasText: 'Data' })).toBeVisible();
+  await expect(page.locator('#mobileNav details summary', { hasText: 'UI Elements' })).toBeVisible();
   await expect(page.locator('#mobileNav')).toHaveCSS('background-color', 'rgb(2, 8, 23)');
 
   await page.goto(`file://${path.join(adminPanelDir, 'mailbox.html').replace(/\\/g, '/')}`);
