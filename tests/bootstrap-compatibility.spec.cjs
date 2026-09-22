@@ -221,7 +221,7 @@ test('Component docs include remaining Bootstrap copy examples', async ({ page }
 });
 
 test('Admin panel example clones AdminLTE page families with Bootstrap runtime', async ({ page }) => {
-  const pages = ['index.html', 'widgets.html', 'mailbox.html', 'forms.html', 'advanced-forms.html', 'tables.html', 'profile.html', 'invoice.html', 'calendar.html', 'buttons.html', 'modals.html', 'timeline.html', 'login.html', 'errors.html'];
+  const pages = ['index.html', 'widgets.html', 'mailbox.html', 'forms.html', 'advanced-forms.html', 'users.html', 'ecommerce.html', 'reports.html', 'tables.html', 'profile.html', 'invoice.html', 'calendar.html', 'buttons.html', 'modals.html', 'timeline.html', 'login.html', 'errors.html'];
   for (const name of pages) {
     const html = fs.readFileSync(path.join(adminPanelDir, name), 'utf8');
     expect(html).toContain('../../docs/assets/windform.css');
@@ -284,6 +284,18 @@ test('Admin panel example clones AdminLTE page families with Bootstrap runtime',
   await expect(page.locator('h1')).toContainText('Admin panel from CDN assets');
   await page.getByRole('button', { name: 'Open actions' }).click();
   await expect(page.getByRole('button', { name: 'Export' })).toBeVisible();
+
+  await page.goto(`file://${path.join(adminPanelDir, 'users.html').replace(/\\/g, '/')}`);
+  await expect(page.locator('h1')).toContainText('Users and permissions');
+  await page.getByRole('button', { name: 'Invite user' }).click();
+  await expect(page.locator('#inviteUserModal')).toHaveClass(/show/);
+
+  await page.goto(`file://${path.join(adminPanelDir, 'reports.html').replace(/\\/g, '/')}`);
+  await page.getByRole('button', { name: 'Export' }).click();
+  await expect(page.getByRole('button', { name: 'CSV' })).toBeVisible();
+
+  await page.goto(`file://${path.join(adminPanelDir, 'ecommerce.html').replace(/\\/g, '/')}`);
+  await expect(page.locator('h1')).toContainText('Orders and products');
 });
 
 test('Auth templates include the complete account access flow', async ({ page }) => {
