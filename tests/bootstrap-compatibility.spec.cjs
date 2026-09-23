@@ -261,6 +261,11 @@ test('Admin panel example clones AdminLTE page families with Bootstrap runtime',
   await expect(page.locator('#mobileNav details summary', { hasText: 'UI Elements' })).toBeVisible();
   await expect(page.locator('#mobileNav')).toHaveCSS('background-color', 'rgb(2, 8, 23)');
 
+  await page.goto(`file://${path.join(adminPanelDir, 'plugins.html').replace(/\\/g, '/')}`);
+  await expect(page.locator('aside details', { hasText: 'Forms' })).toHaveAttribute('open', '');
+  await expect(page.locator('aside a[aria-current="page"]')).toContainText('Plugin selects');
+  await expect(page.locator('aside details summary', { hasText: 'Forms' })).toHaveClass(/bg-background\/10/);
+
   await page.goto(`file://${path.join(adminPanelDir, 'mailbox.html').replace(/\\/g, '/')}`);
   await page.locator('[data-bs-target="#composeModal"]').click();
   await expect(page.locator('#composeModal')).toHaveClass(/show/);
