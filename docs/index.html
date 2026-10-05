@@ -32,6 +32,7 @@
             <a class="text-muted-foreground transition hover:text-foreground" href="#tokens">Tokens</a>
             <a class="text-muted-foreground transition hover:text-foreground" href="components.html">Components</a>
             <a class="text-muted-foreground transition hover:text-foreground" href="templates.html">Templates</a>
+            <a class="text-muted-foreground transition hover:text-foreground" href="campus-dashboard.html">CampusControl</a>
             <a class="text-muted-foreground transition hover:text-foreground" href="auth.html">Auth</a>
             <a class="text-muted-foreground transition hover:text-foreground" href="docs.html">Docs</a>
             <a class="text-muted-foreground transition hover:text-foreground" href="blocks.html">Blocks Catalog</a>
@@ -56,19 +57,19 @@
       <main class="flex-1">
         <section class="relative overflow-hidden border-b border-border/80 bg-gradient-to-b from-background via-background/95 to-muted/50">
           <div class="absolute inset-y-0 right-0 -z-10 hidden w-1/2 rounded-l-[56px] bg-primary/5 blur-3xl lg:block"></div>
-          <div class="mx-auto grid w-full max-w-6xl gap-12 px-4 pb-20 pt-16 sm:px-6 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:px-8">
+          <div class="mx-auto grid w-full max-w-7xl gap-12 px-4 pb-20 pt-16 sm:px-6 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:px-8">
             <div class="space-y-6">
               <span class="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
-                Shadcn × Tailwind × Bootstrap motto
+                Tailwind tokens · Bootstrap behavior
               </span>
-              <h1 class="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-                Build polished experiences with Tailwind-calibrated tokens.
+              <h1 class="max-w-3xl text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+                Build Bootstrap-compatible UIs with Tailwind tokens.
               </h1>
-              <p class="max-w-xl text-lg leading-relaxed text-muted-foreground">
-                Windform ships ready-to-copy markup wired to Tailwind utility recipes and shadcn/ui tokens while embracing Bootstrap&rsquo;s familiar semantics and JavaScript behaviours. Start with the CDN starter for a no-build page, then compile <code class="rounded bg-secondary px-1.5 py-0.5 text-xs text-foreground">src/windform.css</code> only when you need an optimized stylesheet that matches your project&mdash;no extra jQuery required.
+              <p class="max-w-2xl text-lg leading-relaxed text-muted-foreground">
+                Windform gives you ready-to-copy HTML, Bootstrap JavaScript interactions, and shadcn-style design tokens in one Tailwind v4 layer. Prototype with the CDN starter, then compile <code class="rounded bg-secondary px-1.5 py-0.5 text-xs text-foreground">src/windform.css</code> for production.
               </p>
-              <p class="max-w-xl text-base leading-relaxed text-muted-foreground">
-                <span class="font-semibold text-foreground">Project Motto:</span> Shadcn UI built on top of Tailwind CSS and the syntax, semantics, and JavaScript interactivity of Bootstrap for a single, cohesive toolkit.
+              <p class="max-w-2xl text-base leading-relaxed text-muted-foreground">
+                Use the same component classes for docs, dashboards, auth screens, and full-page examples without adding jQuery or changing stacks.
               </p>
               <div class="flex flex-wrap gap-4">
                 <a class="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow transition hover:bg-primary/90" href="cdn-starter.html">
@@ -77,47 +78,44 @@
                     <path d="m7.5 5.5 5 5-5 5" stroke-linecap="round" stroke-linejoin="round"></path>
                   </svg>
                 </a>
-                <a class="inline-flex items-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-semibold text-foreground transition hover:border-primary/50 hover:text-primary" href="docs.html#setup">
-                  Read setup
+                <a class="inline-flex items-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-semibold text-foreground transition hover:border-primary/50 hover:text-primary" href="campus-dashboard.html">
+                  CampusControl dashboard
                 </a>
                 <a class="inline-flex items-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-semibold text-foreground transition hover:border-primary/50 hover:text-primary" href="templates.html">
                   Browse templates
                 </a>
-                <a class="inline-flex items-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-semibold text-foreground transition hover:border-primary/50 hover:text-primary" href="examples/admin-panel/">
-                  Admin panel example
+                <a class="inline-flex items-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-semibold text-foreground transition hover:border-primary/50 hover:text-primary" href="docs.html#setup">
+                  Read setup
                 </a>
               </div>
             </div>
-            <div class="relative rounded-3xl border border-border bg-card/80 p-6 shadow-[0_30px_60px_-45px_rgba(37,99,235,0.65)]">
+            <div class="relative rounded-[2rem] border border-border bg-card/80 p-5 shadow-[0_30px_60px_-45px_rgba(37,99,235,0.65)] sm:p-6">
               <div class="absolute -top-6 right-6 hidden rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary lg:inline-flex">
-                Two authoring paths
+                Live examples
               </div>
-              <div class="space-y-5">
-                <div>
-                  <h2 class="text-base font-semibold text-foreground">Start with CDN, optimize when ready</h2>
-                  <p class="mt-2 text-sm text-muted-foreground">Use Windform&rsquo;s stylesheet with Tailwind&rsquo;s browser CDN and Bootstrap&rsquo;s bundle for a no-build page. Bring in <code class="rounded bg-secondary px-1.5 py-0.5 text-xs text-foreground">src/windform.css</code> only when you want a customized, optimized production bundle.</p>
-                </div>
-                <div class="rounded-2xl border border-border bg-muted/40 p-4">
-                  <pre class="overflow-x-auto text-xs text-muted-foreground"><code>&lt;link rel="stylesheet" href="https://md-riaz.github.io/Windform/assets/windform.css"&gt;
-&lt;script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"&gt;&lt;/script&gt;
-&lt;style type="text/tailwindcss"&gt;
-  @theme { --color-primary: hsl(var(--primary)); /* token map */ }
-&lt;/style&gt;
-&lt;script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
-
-# Build later for a smaller custom bundle.
-</code></pre>
-                </div>
-                <div class="grid gap-3 sm:grid-cols-2">
-                  <div class="rounded-2xl border border-border bg-background/60 p-4">
-                    <p class="text-sm font-semibold text-foreground">Tailwind-native</p>
-                    <p class="mt-1 text-xs text-muted-foreground">Semantic class names and utility recipes keep your components consistent without extra CSS.</p>
+              <div class="space-y-4">
+                <a class="group block rounded-3xl border border-border bg-background p-5 text-foreground no-underline transition hover:-translate-y-0.5 hover:border-primary/40 hover:no-underline" href="campus-dashboard.html">
+                  <div class="flex items-center justify-between gap-4">
+                    <div>
+                      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-primary">New full-page demo</p>
+                      <h2 class="mt-2 text-xl font-semibold tracking-tight">CampusControl dashboard</h2>
+                      <p class="mt-2 text-sm leading-relaxed text-muted-foreground">A responsive school admin dashboard with desktop sidebar, mobile burger/offcanvas menu, metrics, charts, events, and operations tables.</p>
+                    </div>
+                    <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-primary text-primary-foreground transition group-hover:scale-105">↗</span>
                   </div>
-                  <div class="rounded-2xl border border-border bg-background/60 p-4">
-                    <p class="text-sm font-semibold text-foreground">Bootstrap-compatible</p>
-                    <p class="mt-1 text-xs text-muted-foreground">Use selected Bootstrap selectors such as <code>.btn</code> and <code>.modal</code>, composed with <code>@apply</code> from the same tokens.</p>
-                  </div>
+                </a>
+                <div class="grid gap-4 sm:grid-cols-2">
+                  <a class="rounded-2xl border border-border bg-background p-4 text-foreground no-underline transition hover:border-primary/40 hover:text-primary hover:no-underline" href="examples/admin-panel/">
+                    <h3 class="text-sm font-semibold">Admin panel example</h3>
+                    <p class="mt-2 text-xs leading-relaxed text-muted-foreground">A multi-page dashboard shell built from generated Windform pages.</p>
+                  </a>
+                  <a class="rounded-2xl border border-border bg-background p-4 text-foreground no-underline transition hover:border-primary/40 hover:text-primary hover:no-underline" href="templates.html">
+                    <h3 class="text-sm font-semibold">Template gallery</h3>
+                    <p class="mt-2 text-xs leading-relaxed text-muted-foreground">Browse standalone templates and embedded component examples.</p>
+                  </a>
                 </div>
+                <pre class="overflow-x-auto rounded-2xl border border-border bg-muted/50 p-4 text-xs leading-6 text-muted-foreground"><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;https://md-riaz.github.io/Windform/assets/windform.css&quot;&gt;
+&lt;script defer src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;</code></pre>
               </div>
             </div>
           </div>
